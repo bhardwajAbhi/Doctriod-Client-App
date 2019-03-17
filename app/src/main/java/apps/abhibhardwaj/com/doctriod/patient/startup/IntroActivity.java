@@ -1,4 +1,4 @@
-package apps.abhibhardwaj.com.doctriod.patient;
+package apps.abhibhardwaj.com.doctriod.patient.startup;
 
 import android.content.Intent;
 import android.support.v4.view.ViewPager;
@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import apps.abhibhardwaj.com.doctriod.patient.HomeActivity;
+import apps.abhibhardwaj.com.doctriod.patient.R;
 
 public class IntroActivity extends AppCompatActivity implements OnClickListener, OnPageChangeListener {
 

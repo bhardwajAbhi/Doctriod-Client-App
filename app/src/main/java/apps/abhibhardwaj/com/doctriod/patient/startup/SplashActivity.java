@@ -1,4 +1,4 @@
-package apps.abhibhardwaj.com.doctriod.patient;
+package apps.abhibhardwaj.com.doctriod.patient.startup;
 
 import android.content.Intent;
 import android.os.Bundle;

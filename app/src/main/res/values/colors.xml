@@ -5,6 +5,12 @@
   <color name="colorAccent">#D81B60</color>
 
   <color name="colorWhite">#FFFFFF</color>
+  <color name="colorBlack">#3E3E3E</color>
   <color name="colorBlue">#19769F</color>
-  <color name="colorGrey">#BBBBBB</color>
+  <color name="colorGrey">#D5D5D5</color>
+  <color name="colorGreen">#5FE5BC</color>
+
+  <color name="colorGradientStart">#19769F</color>
+  <color name="colorGradientEnd">#35D8A6</color>
+
 </resources>

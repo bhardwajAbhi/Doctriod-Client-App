@@ -1,4 +1,4 @@
-package apps.abhibhardwaj.com.doctriod.patient;
+package apps.abhibhardwaj.com.doctriod.patient.startup;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import apps.abhibhardwaj.com.doctriod.patient.R;
 
 public class IntroAdapter extends PagerAdapter {
 

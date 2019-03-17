@@ -11,16 +11,8 @@
     android:theme="@style/AppTheme">
 
 
-    <activity android:name=".IntroActivity"
-      android:theme="@style/IntroTheme">
-    </activity>
-
-    <activity android:name=".HomeActivity">
-    </activity>
-
-    <activity
-      android:name=".SplashActivity"
-      android:theme="@style/SplashTheme">
+    <activity android:name=".startup.LoginActivity"
+      android:theme="@style/AppTheme">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
 
@@ -29,6 +21,18 @@
     </activity>
 
 
+
+    <activity
+      android:name=".startup.IntroActivity"
+      android:theme="@style/IntroTheme">
+    </activity>
+    <activity android:name=".HomeActivity">
+    </activity>
+    <activity
+      android:name=".startup.SplashActivity"
+      android:theme="@style/SplashTheme">
+
+    </activity>
   </application>
 
 </manifest>
