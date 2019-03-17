@@ -1,3 +1,13 @@
 <resources>
   <string name="app_name">Doctriod</string>
+
+  <string name="heading_one">DOCTORS</string>
+  <string name="heading_two">MEDICINE</string>
+  <string name="heading_three">APPOINTMENTS</string>
+
+  <string name="desc_one">Find expert doctors for particular problem\non one tap</string>
+  <string name="desc_two">Alopathic, Ayurvedic and all types of medicines\ncan be bought from here</string>
+  <string name="desc_three">Book appointments and get best treatment\non one tap</string>
+
+
 </resources>
