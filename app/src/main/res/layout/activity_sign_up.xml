@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:padding="8dp"
+  android:orientation="vertical"
+  android:gravity="center"
+  android:background="@color/colorWhite"
+  tools:context=".startup.SignUpActivity">
+
+  <ImageView
+    android:id="@+id/signup_iv_back"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/ic_arrow_prev"
+    android:layout_marginTop="16dp"
+    android:layout_gravity="start"/>
+
+  <View
+    android:layout_weight="1"
+    android:layout_width="0dp"
+    android:layout_height="0dp"/>
+
+  <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Sign Up"
+    android:textColor="@color/colorBlue"
+    android:fontFamily="@font/helvetica"
+    android:textSize="26sp"
+    android:textStyle="bold"
+    android:layout_gravity="start"
+    android:layout_margin="16dp"/>
+
+  <EditText
+    android:id="@+id/signup_edt_full_name"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/margin_start"
+    android:layout_marginEnd="@dimen/margin_end"
+    android:layout_marginTop="16dp"
+    android:padding="10dp"
+    android:drawablePadding="8dp"
+    android:hint="Full Name"
+    android:fontFamily="@font/helvetica"
+    android:textColor="@color/colorBlue"
+    android:inputType="textPersonName"
+    android:singleLine="true"
+    android:background="@drawable/background_edit_text_selector"
+    />
+
+  <EditText
+    android:id="@+id/signup_edt_mail"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/margin_start"
+    android:layout_marginEnd="@dimen/margin_end"
+    android:layout_marginTop="16dp"
+    android:padding="10dp"
+    android:drawablePadding="8dp"
+    android:hint="E-mail"
+    android:fontFamily="@font/helvetica"
+    android:textColor="@color/colorBlue"
+    android:inputType="textEmailAddress"
+    android:singleLine="true"
+    android:background="@drawable/background_edit_text_selector"
+    />
+
+  <EditText
+    android:id="@+id/signup_edt_phone"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/margin_start"
+    android:layout_marginEnd="@dimen/margin_end"
+    android:layout_marginTop="16dp"
+    android:padding="10dp"
+    android:drawablePadding="8dp"
+    android:hint="Mobile Number"
+    android:fontFamily="@font/helvetica"
+    android:textColor="@color/colorBlue"
+    android:inputType="phone"
+    android:singleLine="true"
+    android:maxLength="10"
+    android:background="@drawable/background_edit_text_selector"
+    />
+
+  <EditText
+    android:id="@+id/signup_edt_password"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/margin_start"
+    android:layout_marginEnd="@dimen/margin_end"
+    android:layout_marginTop="16dp"
+    android:padding="10dp"
+    android:drawablePadding="8dp"
+    android:hint="Password"
+    android:fontFamily="@font/helvetica"
+    android:textColor="@color/colorBlue"
+    android:inputType="textPassword"
+    android:singleLine="true"
+    android:maxLength="16"
+    android:background="@drawable/background_edit_text_selector"
+    />
+
+  <EditText
+    android:id="@+id/signup_edt_confirm_pass"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/margin_start"
+    android:layout_marginEnd="@dimen/margin_end"
+    android:layout_marginTop="16dp"
+    android:padding="10dp"
+    android:drawablePadding="8dp"
+    android:hint="Confirm Password"
+    android:fontFamily="@font/helvetica"
+    android:textColor="@color/colorBlue"
+    android:inputType="textPassword"
+    android:singleLine="true"
+    android:maxLength="16"
+    android:background="@drawable/background_edit_text_selector"
+    />
+
+  <Button
+    android:id="@+id/signup_btn_signUp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/margin_start"
+    android:layout_marginEnd="@dimen/margin_end"
+    android:layout_marginTop="32dp"
+    android:background="@drawable/background_gradient_button"
+    android:elevation="8dp"
+    android:text="Sign Up"
+    android:textAllCaps="false"
+    android:textColor="@color/colorWhite"
+    android:fontFamily="@font/helvetica"
+    android:textSize="18sp"
+    android:textStyle="bold"
+    />
+
+  <View
+    android:layout_weight="3"
+    android:layout_width="0dp"
+    android:layout_height="0dp"/>
+
+</LinearLayout>

@@ -39,10 +39,11 @@
     android:drawableLeft="@drawable/ic_mail"
     android:drawablePadding="8dp"
     android:hint="E-mail"
+    android:singleLine="true"
     android:fontFamily="@font/helvetica"
     android:textColor="@color/colorBlue"
     android:inputType="textEmailAddress"
-    android:background="@drawable/background_edit_text"
+    android:background="@drawable/background_edit_text_selector"
     />
 
   <EditText
@@ -56,10 +57,11 @@
     android:drawableLeft="@drawable/ic_key"
     android:drawablePadding="8dp"
     android:hint="Password"
+    android:singleLine="true"
     android:fontFamily="@font/helvetica"
     android:textColor="@color/colorBlue"
     android:inputType="textPassword"
-    android:background="@drawable/background_edit_text"
+    android:background="@drawable/background_edit_text_selector"
     />
 
   <TextView
@@ -111,7 +113,7 @@
       android:padding="8dp"
       android:layout_marginEnd="4dp"
       android:src="@drawable/ic_facebook"
-      android:background="@drawable/background_edit_text"/>
+      android:background="@drawable/background_edit_text_simple"/>
 
     <ImageButton
       android:id="@+id/login_btn_google"
@@ -121,7 +123,7 @@
       android:padding="8dp"
       android:layout_marginStart="4dp"
       android:src="@drawable/ic_google_plus"
-      android:background="@drawable/background_edit_text"/>
+      android:background="@drawable/background_edit_text_simple"/>
 
   </LinearLayout>
 
