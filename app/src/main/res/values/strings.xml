@@ -11,6 +11,7 @@
 
 
   <string name="tv_sign_up">Don\'t Have Account ?</string>
+  <string name="forget_pass">We just need your registered e-mail ID to send reset link</string>
 
 
 </resources>

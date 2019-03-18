@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import apps.abhibhardwaj.com.doctriod.patient.HomeActivity;
 import apps.abhibhardwaj.com.doctriod.patient.R;
+import apps.abhibhardwaj.com.doctriod.patient.others.SharedPref;
 
 public class IntroActivity extends AppCompatActivity implements OnClickListener, OnPageChangeListener {
 
@@ -144,7 +145,10 @@ public class IntroActivity extends AppCompatActivity implements OnClickListener,
       }
       case R.id.btn_start:
       {
-        startActivity(new Intent(IntroActivity.this, HomeActivity.class));
+        SharedPref pref = new SharedPref(IntroActivity.this);
+        pref.setAppLaunchedFirstTime(false);
+
+        startActivity(new Intent(IntroActivity.this, LoginActivity.class));
         finish();
         break;
       }

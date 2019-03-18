@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical"
+  android:padding="8dp"
+  tools:context=".startup.ForgetPassActivity">
+
+  <ImageView
+    android:id="@+id/frgtpass_iv_back"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/ic_arrow_prev"
+    android:layout_marginTop="24dp"
+    android:layout_gravity="start"/>
+
+  <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/margin_start"
+    android:layout_marginEnd="@dimen/margin_end"
+    android:layout_marginTop="32dp"
+    android:text="Forget Password"
+    android:textColor="@color/colorBlue"
+    android:fontFamily="@font/helvetica"
+    android:textSize="24sp"
+    android:textStyle="bold"
+    android:layout_gravity="start"/>
+
+  <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/margin_start"
+    android:layout_marginEnd="@dimen/margin_end"
+    android:layout_marginTop="8dp"
+    android:text="@string/forget_pass"
+    android:textColor="@color/colorDarkGrey"
+    android:fontFamily="@font/helvetica"
+    android:textSize="16sp"
+    android:textStyle="bold"
+    android:layout_gravity="start"/>
+
+  <EditText
+    android:id="@+id/frgtpass_edt_mail"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/margin_start"
+    android:layout_marginEnd="@dimen/margin_end"
+    android:layout_marginTop="24dp"
+    android:padding="10dp"
+    android:drawablePadding="8dp"
+    android:hint="E-mail"
+    android:fontFamily="@font/helvetica"
+    android:textColor="@color/colorBlue"
+    android:inputType="textEmailAddress"
+    android:singleLine="true"
+    android:background="@drawable/background_edit_text_selector"
+    />
+
+  <Button
+    android:id="@+id/frgtpass_btn_reset"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/margin_start"
+    android:layout_marginEnd="@dimen/margin_end"
+    android:layout_marginTop="32dp"
+    android:background="@drawable/background_gradient_button"
+    android:elevation="8dp"
+    android:text="Reset Password"
+    android:textAllCaps="false"
+    android:textColor="@color/colorWhite"
+    android:fontFamily="@font/helvetica"
+    android:textSize="18sp"
+    android:textStyle="bold"
+    />
+
+
+</LinearLayout>
