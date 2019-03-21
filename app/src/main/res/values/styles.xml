@@ -4,10 +4,15 @@
   <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
     <!-- Customize your theme here. -->
     <item name="colorPrimary">@color/colorPrimary</item>
-    <item name="colorPrimaryDark">@color/colorGrey</item>
+    <item name="colorPrimaryDark">@color/colorDarkBlue</item>
     <item name="colorAccent">@color/colorBlue</item>
   </style>
 
+  <style name="NavigationText" parent="@android:style/TextAppearance.Medium">
+    <item name="android:textColor">@color/colorWhite</item>
+    <item name="android:textSize">18sp</item>
+    <item name="android:fontFamily">@font/helvetica</item>
+  </style>
 
   <!-- Splash activity theme. -->
   <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">

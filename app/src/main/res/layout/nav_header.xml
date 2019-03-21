@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:gravity="center"
+  android:orientation="vertical">
+
+  <ImageView
+    android:id="@+id/iv_btn_close"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="end"
+    android:layout_marginStart="@dimen/margin_start"
+    android:layout_marginTop="@dimen/margin_start"
+    android:layout_marginEnd="@dimen/margin_end"
+    android:src="@drawable/ic_close"/>
+
+  <de.hdodenhof.circleimageview.CircleImageView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_profile_image"
+    android:layout_width="115dp"
+    android:layout_height="115dp"
+    android:src="@drawable/img_dummy_user"
+    android:background="@drawable/background_nav_header_user_img"
+    app:civ_border_width="1dp"
+    app:civ_border_color="#FFFFFF"/>
+
+  <TextView
+    android:id="@+id/nav_user_name"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="User name"
+    android:fontFamily="@font/helvetica"
+    android:layout_margin="8dp"
+    android:textSize="18sp"
+    android:textStyle="bold"
+    android:textColor="@color/colorWhite"
+    />
+
+</LinearLayout>
