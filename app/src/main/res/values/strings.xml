@@ -13,5 +13,28 @@
   <string name="tv_sign_up">Don\'t Have Account ?</string>
   <string name="forget_pass">We just need your registered e-mail ID to send reset link</string>
 
+  <string name="hello_blank_fragment">Hello blank fragment</string>
+
+  <string name="DOB">DOB (MM/DD/YYYY)</string>
+
+
+
+  <string-array name="bloodType">
+    <item>Unknown</item>
+    <item>A+</item>
+    <item>A-</item>
+    <item>B+</item>
+    <item>B-</item>
+    <item>AB+</item>
+    <item>AB-</item>
+    <item>O+</item>
+    <item>O-</item>
+  </string-array>
+  <string-array name="gender">
+    <item>Not Specified</item>
+    <item>Female</item>
+    <item>Male</item>
+  </string-array>
+
 
 </resources>

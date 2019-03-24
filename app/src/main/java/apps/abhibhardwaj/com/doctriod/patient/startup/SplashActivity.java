@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import apps.abhibhardwaj.com.doctriod.patient.HomeActivity;
+import apps.abhibhardwaj.com.doctriod.patient.home.HomeActivity;
 import apps.abhibhardwaj.com.doctriod.patient.others.SharedPref;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

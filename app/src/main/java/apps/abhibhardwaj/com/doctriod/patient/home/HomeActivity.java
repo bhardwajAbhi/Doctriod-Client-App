@@ -1,7 +1,8 @@
-package apps.abhibhardwaj.com.doctriod.patient;
+package apps.abhibhardwaj.com.doctriod.patient.home;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
+import apps.abhibhardwaj.com.doctriod.patient.R;
 
 public class HomeActivity extends AppCompatActivity implements OnClickListener {
 
@@ -34,6 +36,8 @@ public class HomeActivity extends AppCompatActivity implements OnClickListener {
     ivClose.setOnClickListener(this);
     ivMenu.setOnClickListener(this);
 
+    loadHomeFragment();
+
   }
 
   private void initToolBar() {
@@ -42,6 +46,12 @@ public class HomeActivity extends AppCompatActivity implements OnClickListener {
     setSupportActionBar(toolbar);
     tvTitle.setText(toolbar.getTitle());
     getSupportActionBar().setDisplayShowTitleEnabled(false);
+  }
+
+  private void loadHomeFragment() {
+    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+    transaction.add(R.id.container_frame, new HomeFragment());
+    transaction.commit();
   }
 
   @Override

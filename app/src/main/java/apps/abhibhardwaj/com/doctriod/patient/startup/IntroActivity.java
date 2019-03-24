@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import apps.abhibhardwaj.com.doctriod.patient.HomeActivity;
 import apps.abhibhardwaj.com.doctriod.patient.R;
 import apps.abhibhardwaj.com.doctriod.patient.others.SharedPref;
 

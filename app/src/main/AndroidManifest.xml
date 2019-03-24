@@ -3,6 +3,9 @@
   package="apps.abhibhardwaj.com.doctriod.patient">
 
   <uses-permission android:name="android.permission.INTERNET"/>
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+  <uses-permission android:name="android.permission.CAMERA"/>
 
   <application
     android:allowBackup="true"
@@ -23,7 +26,7 @@
       android:name=".startup.IntroActivity"
       android:theme="@style/IntroTheme">
     </activity>
-    <activity android:name=".HomeActivity">
+    <activity android:name=".home.HomeActivity">
     </activity>
     <activity
       android:name=".startup.SplashActivity"
