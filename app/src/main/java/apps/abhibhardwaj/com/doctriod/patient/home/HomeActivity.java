@@ -1,11 +1,13 @@
 package apps.abhibhardwaj.com.doctriod.patient.home;
 
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
@@ -14,7 +16,6 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 import apps.abhibhardwaj.com.doctriod.patient.R;
-import apps.abhibhardwaj.com.doctriod.patient.models.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -22,8 +23,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -55,7 +54,8 @@ public class HomeActivity extends AppCompatActivity implements OnClickListener {
 
   private void initFireBase() {
     currentUser = FirebaseAuth.getInstance().getCurrentUser();
-    databaseReference = FirebaseDatabase.getInstance().getReference().child("Database").child("Users");
+    databaseReference = FirebaseDatabase.getInstance().getReference().child("Database")
+        .child("Users");
   }
 
   private void addClickListeners() {
@@ -81,7 +81,9 @@ public class HomeActivity extends AppCompatActivity implements OnClickListener {
           public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
             tvUserName.setText(dataSnapshot.child("fullName").getValue().toString());
             tvUserEmail.setText(dataSnapshot.child("email").getValue().toString());
-            Picasso.get().load(Uri.parse(dataSnapshot.child("profileImageURL").getValue().toString())).into(ivUserProfile);
+            Picasso.get()
+                .load(Uri.parse(dataSnapshot.child("profileImageURL").getValue().toString()))
+                .into(ivUserProfile);
           }
 
           @Override
@@ -130,5 +132,28 @@ public class HomeActivity extends AppCompatActivity implements OnClickListener {
     } else {
       drawerLayout.openDrawer(Gravity.START);
     }
+  }
+
+  @Override
+  public void onBackPressed() {
+    if (drawerLayout.isDrawerOpen(Gravity.START)) {
+      drawerLayout.closeDrawer(Gravity.START);
+    } else {
+      if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
+        new AlertDialog.Builder(this)
+            .setMessage("Are you sure you want to exit?")
+            .setCancelable(false)
+            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+              public void onClick(DialogInterface dialog, int id) {
+                HomeActivity.super.onBackPressed();
+              }
+            })
+            .setNegativeButton("No", null)
+            .show();
+      } else {
+        getSupportFragmentManager().popBackStack();
+      }
+    }
+
   }
 }

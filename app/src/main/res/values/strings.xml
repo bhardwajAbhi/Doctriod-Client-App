@@ -18,7 +18,6 @@
   <string name="DOB">DOB (MM/DD/YYYY)</string>
 
 
-
   <string-array name="bloodType">
     <item>Unknown</item>
     <item>A+</item>

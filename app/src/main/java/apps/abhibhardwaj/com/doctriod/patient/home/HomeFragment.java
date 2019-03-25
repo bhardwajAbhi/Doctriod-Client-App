@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import apps.abhibhardwaj.com.doctriod.patient.R;
 import apps.abhibhardwaj.com.doctriod.patient.others.Utils;
+import apps.abhibhardwaj.com.doctriod.patient.recognizemeds.RecognizeMedsFragment;
 
 
 /**
@@ -81,7 +83,7 @@ public class HomeFragment extends Fragment {
           }
           case 6:
           {
-            Utils.makeToast(getActivity(), "you clicked item " + position);
+            replaceFragment(new RecognizeMedsFragment());
             break;
           }
           case 7:
@@ -93,4 +95,13 @@ public class HomeFragment extends Fragment {
       }
     });
   }
+
+  private void replaceFragment(Fragment fragment)
+  {
+    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+    transaction.replace(R.id.container_frame, fragment);
+    transaction.addToBackStack("homeFrag");
+    transaction.commit();
+  }
+
 }

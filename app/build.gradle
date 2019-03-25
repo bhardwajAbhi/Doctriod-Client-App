@@ -38,5 +38,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:16.2.0'
     // picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
+    //google vision dependency
+    implementation 'com.google.android.gms:play-services-vision:17.0.2'
 }
 apply plugin: 'com.google.gms.google-services'
