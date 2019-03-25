@@ -54,6 +54,41 @@ public class HomeFragment extends Fragment {
             Utils.makeToast(getActivity(), "you clicked item " + position);
             break;
           }
+          case 1:
+          {
+            Utils.makeToast(getActivity(), "you clicked item " + position);
+            break;
+          }
+          case 2:
+          {
+            Utils.makeToast(getActivity(), "you clicked item " + position);
+            break;
+          }
+          case 3:
+          {
+            Utils.makeToast(getActivity(), "you clicked item " + position);
+            break;
+          }
+          case 4:
+          {
+            Utils.makeToast(getActivity(), "you clicked item " + position);
+            break;
+          }
+          case 5:
+          {
+            Utils.makeToast(getActivity(), "you clicked item " + position);
+            break;
+          }
+          case 6:
+          {
+            Utils.makeToast(getActivity(), "you clicked item " + position);
+            break;
+          }
+          case 7:
+          {
+            Utils.makeToast(getActivity(), "you clicked item " + position);
+            break;
+          }
         }
       }
     });

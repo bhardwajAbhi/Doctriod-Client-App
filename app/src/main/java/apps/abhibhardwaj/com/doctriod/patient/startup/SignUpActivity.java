@@ -340,7 +340,7 @@ public class SignUpActivity extends AppCompatActivity implements OnClickListener
                       user.setProfileImageURL(uri.toString());
                       user.setProfileImageName(capImageURI.getLastPathSegment());
 
-                      databaseReference.child(auth.getCurrentUser().getUid()).setValue(user);
+                      databaseReference.child(auth.getCurrentUser().getUid()).child("BasicDetails").setValue(user);
 
 
                       progressDialog.dismiss();

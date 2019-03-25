@@ -18,7 +18,6 @@
     app:headerLayout="@layout/nav_header"
     app:menu="@menu/navigation_menu"
     app:itemTextAppearance="@style/NavigationText"
-    app:itemBackground="@drawable/background_navigation_menu_item_selector"
     android:background="@drawable/background_navigation_drawer"
     android:layout_gravity="start"
     android:layout_height="match_parent">

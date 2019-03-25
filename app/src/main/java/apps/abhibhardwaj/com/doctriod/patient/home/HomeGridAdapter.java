@@ -13,8 +13,8 @@ import java.util.ArrayList;
 public class HomeGridAdapter extends BaseAdapter {
 
   Context context;
-  private int  icons [] = {R.drawable.ic_find_doctor, R.drawable.ic_appointments, R.drawable.ic_hospitals, R.drawable.ic_shop, R.drawable.ic_medicine, R.drawable.ic_emergency};
-  private String labels [] = {"Find Doctor", "Appointments", "Nearby", "Buy Medicine", "Medicines", "Emergency"};
+  private int  icons [] = {R.drawable.ic_find_doctor, R.drawable.ic_appointments, R.drawable.ic_hospitals, R.drawable.ic_shop, R.drawable.ic_medicine, R.drawable.ic_emergency, R.drawable.ic_reg_meds, R.drawable.ic_pill_remind};
+  private String labels [] = {"Find Doctor", "Appointments", "Nearby", "Buy Medicine", "Chat Bot", "Emergency", "Find Medicine", "Pill Reminder"};
 
   public HomeGridAdapter (Context context) {
     this.context = context;

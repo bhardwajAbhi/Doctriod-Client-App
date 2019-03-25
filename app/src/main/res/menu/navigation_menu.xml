@@ -2,23 +2,27 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
   <item
-    android:id="@+id/nav_item1"
+    android:id="@+id/nav_item_home"
     android:title="HOME"/>
 
   <item
-    android:id="@+id/nav_item2"
+    android:id="@+id/nav_item_appoint"
     android:title="APPOINTMENTS"/>
 
   <item
-    android:id="@+id/nav_item3"
+    android:id="@+id/nav_item_nearby"
     android:title="NEARBY"/>
 
   <item
-    android:id="@+id/nav_item4"
+    android:id="@+id/nav_item_remind"
     android:title="REMINDER"/>
 
   <item
-    android:id="@+id/nav_item5"
+    android:id="@+id/nav_item_profile"
     android:title="PROFILE"/>
+
+  <item
+    android:id="@+id/nav_item_logout"
+    android:title="LOGOUT"/>
 
 </menu>
