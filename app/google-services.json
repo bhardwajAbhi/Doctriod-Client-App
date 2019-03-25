@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "767943833447",
+    "firebase_url": "https://docroid.firebaseio.com",
+    "project_id": "docroid",
+    "storage_bucket": "docroid.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:767943833447:android:56954948d1b56dca",
+        "android_client_info": {
+          "package_name": "apps.abhibhardwaj.com.doctriod.patient"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "767943833447-1mkn4klfm0ueu1232vu57pjoekevp2c5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "apps.abhibhardwaj.com.doctriod.patient",
+            "certificate_hash": "48c3b6bbc70dc9ff8eb0797230e5862ecf00b46b"
+          }
+        },
+        {
+          "client_id": "767943833447-68p55kvqmuffgvbs69h4tut17stfohep.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBr5CvCjtni19TuJv0RZALTK3W-OJoOcjA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "767943833447-68p55kvqmuffgvbs69h4tut17stfohep.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

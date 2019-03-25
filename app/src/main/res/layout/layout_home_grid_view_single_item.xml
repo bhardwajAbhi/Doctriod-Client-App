@@ -10,7 +10,7 @@
   android:background="@drawable/background_gradient_button">
 
   <LinearLayout
-    android:layout_width="wrap_content"
+    android:layout_width="160dp"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:gravity="center"
@@ -20,7 +20,7 @@
 
     <ImageView
       android:id="@+id/iv_icon"
-      android:layout_width="130dp"
+      android:layout_width="140dp"
       android:layout_height="100dp"
       android:src="@drawable/ic_find_doctor"
       android:adjustViewBounds="true"/>
@@ -32,6 +32,7 @@
       android:text="Doctors"
       android:textSize="16sp"
       android:textStyle="bold"
+      android:textAlignment="center"
       android:fontFamily="@font/helvetica"
       android:textColor="@color/colorDarkBlue"
       android:padding="4dp"/>
