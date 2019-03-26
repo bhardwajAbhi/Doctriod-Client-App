@@ -309,6 +309,12 @@ public class SignUpActivity extends AppCompatActivity implements OnClickListener
       return;
     }
 
+    if (capImageURI == null)
+    {
+      Utils.makeToast(SignUpActivity.this, "Please select a profile image to continue");
+      return;
+    }
+
     //if everything is Ok
     progressDialog.setMessage("Signing Up, Please Wait...");
     progressDialog.show();

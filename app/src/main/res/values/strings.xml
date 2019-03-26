@@ -16,6 +16,7 @@
   <string name="hello_blank_fragment">Hello blank fragment</string>
 
   <string name="DOB">DOB (MM/DD/YYYY)</string>
+  <string name="meds_hint">Recognized Meds will appear here</string>
 
 
   <string-array name="bloodType">

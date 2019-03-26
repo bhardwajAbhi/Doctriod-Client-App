@@ -1,6 +1,7 @@
 package apps.abhibhardwaj.com.doctriod.patient.home;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,9 +14,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import apps.abhibhardwaj.com.doctriod.patient.R;
+import apps.abhibhardwaj.com.doctriod.patient.others.Utils;
+import apps.abhibhardwaj.com.doctriod.patient.recognizemeds.RecognizeMedsActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -34,6 +40,8 @@ public class HomeActivity extends AppCompatActivity implements OnClickListener {
   private CircleImageView ivUserProfile;
   private DrawerLayout drawerLayout;
   private NavigationView navigationView;
+  GridView gridView;
+  HomeGridAdapter adapter;
 
   FirebaseUser currentUser;
   DatabaseReference databaseReference;
@@ -48,8 +56,61 @@ public class HomeActivity extends AppCompatActivity implements OnClickListener {
     initViews();
     addClickListeners();
     initNavHeader();
-    loadHomeFragment();
+    initGridView();
+  }
 
+  private void initGridView() {
+    gridView = findViewById(R.id.home_grid_view);
+    adapter = new HomeGridAdapter(HomeActivity.this);
+    gridView.setAdapter(adapter);
+    gridView.setOnItemClickListener(new OnItemClickListener() {
+      @Override
+      public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        switch (position)
+        {
+          case 0:
+          {
+            Utils.makeToast(HomeActivity.this, "you clicked item " + position);
+            break;
+          }
+          case 1:
+          {
+            Utils.makeToast(HomeActivity.this, "you clicked item " + position);
+            break;
+          }
+          case 2:
+          {
+            Utils.makeToast(HomeActivity.this, "you clicked item " + position);
+            break;
+          }
+          case 3:
+          {
+            Utils.makeToast(HomeActivity.this, "you clicked item " + position);
+            break;
+          }
+          case 4:
+          {
+            Utils.makeToast(HomeActivity.this, "you clicked item " + position);
+            break;
+          }
+          case 5:
+          {
+            Utils.makeToast(HomeActivity.this, "you clicked item " + position);
+            break;
+          }
+          case 6:
+          {
+            startActivity(new Intent(HomeActivity.this, RecognizeMedsActivity.class));
+            break;
+          }
+          case 7:
+          {
+            Utils.makeToast(HomeActivity.this, "you clicked item " + position);
+            break;
+          }
+        }
+      }
+    });
   }
 
   private void initFireBase() {
@@ -100,12 +161,6 @@ public class HomeActivity extends AppCompatActivity implements OnClickListener {
     setSupportActionBar(toolbar);
     tvTitle.setText(toolbar.getTitle());
     getSupportActionBar().setDisplayShowTitleEnabled(false);
-  }
-
-  private void loadHomeFragment() {
-    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-    transaction.add(R.id.container_frame, new HomeFragment());
-    transaction.commit();
   }
 
   @Override

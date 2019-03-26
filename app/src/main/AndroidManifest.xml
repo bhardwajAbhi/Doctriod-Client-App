@@ -6,6 +6,8 @@
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
   <uses-permission android:name="android.permission.CAMERA"/>
+  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
   <application
     android:allowBackup="true"
@@ -14,6 +16,8 @@
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
+    <activity android:name=".recognizemeds.RecognizeMedsActivity">
+    </activity>
     <activity android:name=".startup.ForgetPassActivity">
     </activity>
     <activity android:name=".startup.SignUpActivity">
@@ -38,7 +42,12 @@
       </intent-filter>
     </activity>
 
-    <meta-data android:name="com.google.android.gms.vision.DEPENDENCIES" android:value="ocr" />
+    <meta-data
+      android:name="com.google.android.geo.API_KEY"
+      android:value="AIzaSyB0mzGO2Yn9fl8RCzWFFCdp8_6zfz9Rerc"/>
+    <meta-data
+      android:name="com.google.android.gms.vision.DEPENDENCIES"
+      android:value="ocr"/>
   </application>
 
 </manifest>

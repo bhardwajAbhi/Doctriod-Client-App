@@ -32,13 +32,28 @@ dependencies {
 
     // circular image view
     implementation 'de.hdodenhof:circleimageview:3.0.0'
+
     // fire base core
     implementation 'com.google.firebase:firebase-core:16.0.8'
+
     // fire base auth
     implementation 'com.google.firebase:firebase-auth:16.2.0'
+
     // picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
+
     //google vision dependency
     implementation 'com.google.android.gms:play-services-vision:17.0.2'
+
+    //Maps
+    implementation 'com.google.android.gms:play-services-maps:16.1.0'
+
+    //Location
+    implementation 'com.google.android.gms:play-services-location:16.0.0'
+
+    //Retrofit
+    implementation 'com.google.code.gson:gson:2.8.2'
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.0.2'
 }
 apply plugin: 'com.google.gms.google-services'

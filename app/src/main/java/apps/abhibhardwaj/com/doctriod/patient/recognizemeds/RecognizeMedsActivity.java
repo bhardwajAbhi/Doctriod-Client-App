@@ -3,19 +3,15 @@ package apps.abhibhardwaj.com.doctriod.patient.recognizemeds;
 import android.Manifest;
 import android.Manifest.permission;
 import android.content.pm.PackageManager;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.util.Log;
 import android.util.SparseArray;
-import android.view.LayoutInflater;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 import apps.abhibhardwaj.com.doctriod.patient.R;
 import com.google.android.gms.vision.CameraSource;
@@ -25,42 +21,29 @@ import com.google.android.gms.vision.text.TextBlock;
 import com.google.android.gms.vision.text.TextRecognizer;
 import java.io.IOException;
 
-public class RecognizeMedsFragment extends Fragment {
+public class RecognizeMedsActivity extends AppCompatActivity {
 
-  private static final String TAG = "RegMedFrag";
+  private static final String TAG = "RegMedActivity";
   private SurfaceView cameraView;
   private TextView textView;
   private CameraSource cameraSource;
 
   private static final int REQUEST_CAMERA = 10;
 
-
-  public RecognizeMedsFragment() {
-    // Required empty public constructor
-  }
-
-
   @Override
-  public View onCreateView(LayoutInflater inflater, ViewGroup container,
-      Bundle savedInstanceState) {
-    // Inflate the layout for this fragment
-    return inflater.inflate(R.layout.fragment_recognize_meds, container, false);
-  }
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_recognize_meds);
 
-  @Override
-  public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-    super.onViewCreated(view, savedInstanceState);
-    cameraView = view.findViewById(R.id.surface_view);
-    textView = view.findViewById(R.id.text_view);
+    cameraView = findViewById(R.id.surface_view);
+    textView = findViewById(R.id.text_view);
 
     startCameraSource();
-
-
   }
 
   private void startCameraSource() {
     // creating text recognizer
-    final TextRecognizer textRecognizer = new TextRecognizer.Builder(getContext()).build();
+    final TextRecognizer textRecognizer = new TextRecognizer.Builder(RecognizeMedsActivity.this).build();
 
     if (!textRecognizer.isOperational())
     {
@@ -69,7 +52,7 @@ public class RecognizeMedsFragment extends Fragment {
     else
     {
       //initialize camera source
-      cameraSource = new CameraSource.Builder(getContext(), textRecognizer)
+      cameraSource = new CameraSource.Builder(RecognizeMedsActivity.this, textRecognizer)
           .setFacing(CameraSource.CAMERA_FACING_BACK)
           .setRequestedPreviewSize(1280, 1024)
           .setAutoFocusEnabled(true)
@@ -86,9 +69,9 @@ public class RecognizeMedsFragment extends Fragment {
       @Override
       public void surfaceCreated(SurfaceHolder holder) {
         try{
-          if(ActivityCompat.checkSelfPermission(getContext(), permission.CAMERA)!= PackageManager.PERMISSION_GRANTED)
+          if(ActivityCompat.checkSelfPermission(RecognizeMedsActivity.this, permission.CAMERA)!= PackageManager.PERMISSION_GRANTED)
           {
-            ActivityCompat.requestPermissions(getActivity(), new String[] {permission.CAMERA}, REQUEST_CAMERA);
+            ActivityCompat.requestPermissions(RecognizeMedsActivity.this, new String[] {permission.CAMERA}, REQUEST_CAMERA);
             return;
           }
           cameraSource.start(cameraView.getHolder());
@@ -106,7 +89,7 @@ public class RecognizeMedsFragment extends Fragment {
 
       @Override
       public void surfaceDestroyed(SurfaceHolder holder) {
-          cameraSource.stop();
+        cameraSource.stop();
       }
     });
 
@@ -122,30 +105,29 @@ public class RecognizeMedsFragment extends Fragment {
        * */
       @Override
       public void receiveDetections(Detections<TextBlock> detections) {
-          final SparseArray<TextBlock> items = detections.getDetectedItems();
+        final SparseArray<TextBlock> items = detections.getDetectedItems();
 
-          if (items.size() != 0)
-          {
-            textView.post(new Runnable() {
-              @Override
-              public void run() {
-                StringBuilder builder = new StringBuilder();
+        if (items.size() != 0)
+        {
+          textView.post(new Runnable() {
+            @Override
+            public void run() {
+              StringBuilder builder = new StringBuilder();
 
-                for (int i = 0; i < items.size(); i ++)
-                {
-                  TextBlock item = items.valueAt(i);
-                  builder.append(item.getValue());
-                  builder.append("  ");
-                }
-                textView.setText(builder.toString());
+              for (int i = 0; i < items.size(); i ++)
+              {
+                TextBlock item = items.valueAt(i);
+                builder.append(item.getValue());
+                builder.append("  ");
               }
-            });
-          }
+              textView.setText(builder.toString());
+            }
+          });
+        }
       }
     });
-
-
   }
+
 
   @Override
   public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
@@ -158,7 +140,7 @@ public class RecognizeMedsFragment extends Fragment {
     if(grantResults[0] == PackageManager.PERMISSION_GRANTED)
     {
       try {
-        if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(RecognizeMedsActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
           return;
         }
         cameraSource.start(cameraView.getHolder());
@@ -167,4 +149,9 @@ public class RecognizeMedsFragment extends Fragment {
       }
     }
   }
+
+
+
+
+
 }
