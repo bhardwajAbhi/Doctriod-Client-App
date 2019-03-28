@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:orientation="vertical"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  app:behavior_hideable="true"
+  app:behavior_peekHeight="40dp"
+  app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
+  android:id="@+id/nearby_bottom_sheet">
+
+  <ImageButton
+    android:id="@+id/btm_sheet_btn_toggle"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:src="@drawable/ic_arrow_up"
+    android:background="@color/colorBlue"/>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/background_navigation_drawer">
+
+    <TextView
+      android:id="@+id/btm_sheet_tv_status"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Nearby"
+      android:textSize="18sp"
+      android:textColor="@color/colorWhite"
+      android:fontFamily="@font/helvetica"
+      android:layout_marginStart="@dimen/margin_start"
+      android:layout_marginBottom="8dp"/>
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="4dp"
+      android:layout_marginBottom="8dp"
+      android:gravity="bottom">
+
+      <LinearLayout
+        android:id="@+id/btm_list_iv_doctor"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_margin="2dp">
+
+        <ImageView
+          android:layout_width="50dp"
+          android:layout_height="50dp"
+          android:src="@drawable/ic_doctors"
+          android:focusableInTouchMode="true"
+          android:background="@drawable/background_neaby_image_button_selector"/>
+
+        <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Doctors"
+          android:textColor="@color/colorWhite"
+          android:textSize="16sp"
+          android:padding="2dp"/>
+
+      </LinearLayout>
+
+      <LinearLayout
+        android:id="@+id/btm_list_iv_dentist"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_margin="2dp">
+
+        <ImageView
+
+          android:layout_width="50dp"
+          android:layout_height="50dp"
+          android:src="@drawable/ic_dentist"
+          android:focusableInTouchMode="true"
+          android:background="@drawable/background_neaby_image_button_selector"/>
+
+        <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Dentists"
+          android:textColor="@color/colorWhite"
+          android:textSize="16sp"
+          android:padding="2dp"/>
+
+      </LinearLayout>
+
+      <LinearLayout
+        android:id="@+id/btm_list_iv_hospital"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_margin="2dp">
+
+        <ImageView
+
+          android:layout_width="50dp"
+          android:layout_height="50dp"
+          android:src="@drawable/ic_hos"
+          android:focusableInTouchMode="true"
+          android:background="@drawable/background_neaby_image_button_selector"/>
+
+        <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Hospitals"
+          android:textColor="@color/colorWhite"
+          android:textSize="16sp"
+          android:padding="2dp"/>
+
+      </LinearLayout>
+
+      <LinearLayout
+        android:id="@+id/btm_list_iv_pharmacy"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_margin="2dp">
+
+        <ImageView
+
+          android:layout_width="50dp"
+          android:layout_height="50dp"
+          android:src="@drawable/ic_pharmacy"
+          android:focusableInTouchMode="true"
+          android:background="@drawable/background_neaby_image_button_selector"/>
+
+        <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Pharmacy"
+          android:textColor="@color/colorWhite"
+          android:textSize="16sp"
+          android:padding="2dp"/>
+
+      </LinearLayout>
+
+
+    </LinearLayout>
+
+
+  </LinearLayout>
+
+
+
+
+</LinearLayout>

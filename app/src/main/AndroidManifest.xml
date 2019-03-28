@@ -16,6 +16,8 @@
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
+    <activity android:name=".nearby.NearbyActivity">
+    </activity>
     <activity android:name=".recognizemeds.RecognizeMedsActivity">
     </activity>
     <activity android:name=".startup.ForgetPassActivity">

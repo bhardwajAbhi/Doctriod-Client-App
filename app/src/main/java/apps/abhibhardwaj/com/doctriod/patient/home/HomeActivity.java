@@ -6,7 +6,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +19,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import apps.abhibhardwaj.com.doctriod.patient.R;
+import apps.abhibhardwaj.com.doctriod.patient.nearby.NearbyActivity;
 import apps.abhibhardwaj.com.doctriod.patient.others.Utils;
 import apps.abhibhardwaj.com.doctriod.patient.recognizemeds.RecognizeMedsActivity;
 import com.google.firebase.auth.FirebaseAuth;
@@ -80,7 +80,7 @@ public class HomeActivity extends AppCompatActivity implements OnClickListener {
           }
           case 2:
           {
-            Utils.makeToast(HomeActivity.this, "you clicked item " + position);
+            startActivity(new Intent(HomeActivity.this, NearbyActivity.class));
             break;
           }
           case 3:
