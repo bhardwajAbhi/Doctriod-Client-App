@@ -1,3 +1,4 @@
+
 package apps.abhibhardwaj.com.doctriod.patient.models;
 
 import java.util.List;

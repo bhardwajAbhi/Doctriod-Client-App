@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
 
-  static final String BASE_URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/";
+  static final String BASE_URL = "https://maps.googleapis.com/maps/api/place/";
   static Retrofit retrofit = null;
 
   public static Retrofit getRetrofitInstance() {

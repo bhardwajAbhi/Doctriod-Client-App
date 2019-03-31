@@ -1,14 +1,15 @@
 package apps.abhibhardwaj.com.doctriod.patient.nearby;
 
 import apps.abhibhardwaj.com.doctriod.patient.models.NearbyPlacesModel;
+import apps.abhibhardwaj.com.doctriod.patient.models.PlaceDetailsModel;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
-public interface ApiInterface {
-  @GET("json")
-  Call<NearbyPlacesModel> getNearbyPlace (@Query("location") String location,
-      @Query("radius") int radius,
-      @Query("types") String types,
+public interface PlaceDetailsInterface {
+  @GET("details/json")
+  Call<PlaceDetailsModel> getPlaceDetails (
+      @Query("placeid") String placeID,
       @Query("key") String APIkey);
+
 }

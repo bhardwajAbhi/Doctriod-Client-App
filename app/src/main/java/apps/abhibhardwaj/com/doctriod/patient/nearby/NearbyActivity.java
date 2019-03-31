@@ -31,9 +31,12 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
+import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -67,7 +70,7 @@ public class NearbyActivity extends AppCompatActivity implements OnClickListener
 
   private static int TOGGLE_FAB = 1;
   private static final String API_KEY = "AIzaSyB0mzGO2Yn9fl8RCzWFFCdp8_6zfz9Rerc";
-  private ApiInterface service;
+  private NearPlaceInterface service;
   private ProgressDialog dialog;
   private ArrayList<Result> placesList;
 
@@ -272,9 +275,26 @@ public class NearbyActivity extends AppCompatActivity implements OnClickListener
         Result result = placesList.get(i);
         LatLng latLng = new LatLng(result.getGeometry().getLocation().getLat(),
             result.getGeometry().getLocation().getLng());
-        showMarker(latLng, result.getName());
+        showMarker(latLng, result.getName(), result.getPlaceId());
       }
     }
+  }
+
+  private void showMarker(LatLng latLng, String title, final String placeId) {
+    MarkerOptions markerOptions = new MarkerOptions().position(latLng).title(title);
+    gMap.addMarker(markerOptions);
+    gMap.animateCamera(CameraUpdateFactory
+        .newLatLngZoom(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()),
+            14));
+
+    gMap.setOnInfoWindowClickListener(new OnInfoWindowClickListener() {
+      @Override
+      public void onInfoWindowClick(Marker marker) {
+        Intent lauchPlaceDetailsActivity = new Intent(NearbyActivity.this, PlaceDetailsActivity.class);
+        lauchPlaceDetailsActivity.putExtra("placeID", placeId);
+        startActivity(lauchPlaceDetailsActivity);
+      }
+    });
   }
 
   private void loadRecyclerViewWithPlaceDetails() {
@@ -295,11 +315,11 @@ public class NearbyActivity extends AppCompatActivity implements OnClickListener
       placesList.clear();
     }
 
-    service = ApiClient.getRetrofitInstance().create(ApiInterface.class);
+    service = ApiClient.getRetrofitInstance().create(NearPlaceInterface.class);
 
     String location = currentLocation.getLatitude() + ", " + currentLocation.getLongitude();
 
-    Call<NearbyPlacesModel> call = service.getNearbyPlace(location, 3000, type, API_KEY);
+    Call<NearbyPlacesModel> call = service.getNearbyPlace(location, 5000, type, API_KEY);
 
     call.enqueue(new Callback<NearbyPlacesModel>() {
       @Override

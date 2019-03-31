@@ -1,12 +1,14 @@
 package apps.abhibhardwaj.com.doctriod.patient.nearby;
 
 import android.content.Context;
+import android.content.Intent;
 import android.location.Location;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -49,6 +51,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     Picasso.get().load(place.getIcon()).into(viewHolder.placeImage);
 
+
+    viewHolder.recyclerViewLayout.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+          Intent lauchPlaceDetailsActivity = new Intent(context, PlaceDetailsActivity.class);
+          lauchPlaceDetailsActivity.putExtra("placeID", place.getPlaceId());
+        context.startActivity(lauchPlaceDetailsActivity);
+      }
+    });
   }
 
   @Override
@@ -61,6 +72,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     ImageView placeImage;
     TextView placeName, placeAddress, placeDistance;
+    View recyclerViewLayout;
 
     public ViewHolder(@NonNull View itemView) {
       super(itemView);
@@ -69,6 +81,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
       placeName = itemView.findViewById(R.id.tv_place_name);
       placeAddress = itemView.findViewById(R.id.tv_place_address);
       placeDistance = itemView.findViewById(R.id.tv_place_distance);
+      recyclerViewLayout = itemView.findViewById(R.id.nearby_recycler_view_layout);
 
 
     }

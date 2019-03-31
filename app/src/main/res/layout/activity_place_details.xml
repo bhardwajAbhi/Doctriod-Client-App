@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context=".nearby.PlaceDetailsActivity">
+
+  <android.support.v7.widget.Toolbar
+    android:id="@+id/placedetails_tool_bar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:layout_alignParentTop="true"
+    android:background="@drawable/background_toolbar">
+
+    <ImageView
+      android:id="@+id/placedetails_toolbar_iv_back"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:src="@drawable/ic_back_arrow"/>
+
+    <TextView
+      android:id="@+id/placedetails_toolbar_tv_title"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/app_name"
+      android:textSize="18sp"
+      android:paddingLeft="8dp"
+      android:textColor="@color/colorWhite"
+      android:fontFamily="@font/helvetica"
+      android:singleLine="true"
+      android:textStyle="bold"
+      android:layout_gravity="center"/>
+
+
+  </android.support.v7.widget.Toolbar>
+
+  <android.support.design.widget.TabLayout
+    android:id="@+id/placedetails_tab_layout"
+    android:layout_below="@id/placedetails_tool_bar"
+    android:background="@drawable/background_toolbar"
+    app:tabTextColor="@color/colorWhite"
+    app:tabSelectedTextColor="@color/colorWhite"
+    app:tabIndicatorColor="#FF910E"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+  </android.support.design.widget.TabLayout>
+
+  <android.support.v4.view.ViewPager
+    android:id="@+id/placedetails_view_pager"
+    android:layout_below="@id/placedetails_tab_layout"
+    android:layout_above="@id/place_details_button_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+  </android.support.v4.view.ViewPager>
+
+  <LinearLayout
+    android:id="@+id/place_details_button_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="5dp"
+    android:layout_alignParentBottom="true">
+    <Button
+      android:id="@+id/placedetails_button_call"
+      android:layout_weight="1"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginRight="2dp"
+      android:text="CALL"
+      android:textSize="16sp"
+      android:padding="8dp"
+      android:textColor="@color/colorWhite"
+      android:background="@color/colorBlue"
+      android:drawableLeft="@drawable/ic_call"/>
+
+    <Button
+      android:id="@+id/placedetails_button_web"
+      android:layout_weight="1"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginRight="2dp"
+      android:padding="8dp"
+      android:text="WEB"
+      android:textSize="16sp"
+      android:textColor="@color/colorWhite"
+      android:background="@color/colorBlue"
+      android:drawableLeft="@drawable/ic_website"/>
+
+    <Button
+      android:id="@+id/placedetails_button_direction"
+      android:layout_weight="1"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:padding="8dp"
+      android:text="Direction"
+      android:textSize="16sp"
+      android:textColor="@color/colorWhite"
+      android:background="@color/colorBlue"
+      android:drawableLeft="@drawable/ic_directions"/>
+  </LinearLayout>
+
+</RelativeLayout>
