@@ -18,6 +18,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import apps.abhibhardwaj.com.doctriod.patient.emergency.EmergencyActivity;
 import apps.abhibhardwaj.com.doctriod.patient.R;
 import apps.abhibhardwaj.com.doctriod.patient.nearby.NearbyActivity;
 import apps.abhibhardwaj.com.doctriod.patient.others.Utils;
@@ -95,7 +96,7 @@ public class HomeActivity extends AppCompatActivity implements OnClickListener {
           }
           case 5:
           {
-            Utils.makeToast(HomeActivity.this, "you clicked item " + position);
+            startActivity(new Intent(HomeActivity.this, EmergencyActivity.class));
             break;
           }
           case 6:

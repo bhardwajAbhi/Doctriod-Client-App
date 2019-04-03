@@ -8,11 +8,14 @@
   <color name="colorBlack">#3E3E3E</color>
   <color name="colorBlue">#19769F</color>
   <color name="colorGrey">#D5D5D5</color>
+  <color name="colorLightGrey">#F7F7F7</color>
   <color name="colorDarkGrey">#C2C2C2</color>
   <color name="colorGreen">#5FE5BC</color>
+  <color name="colorActiveGreen">#03BD63</color>
   <color name="colorDarkBlue">#125E80</color>
-
+  <color name="colorPeach">#FFF2DF</color>
   <color name="colorGradientStart">#19769F</color>
   <color name="colorGradientEnd">#35D8A6</color>
+  <color name="colorRed">#F44336</color>
 
 </resources>

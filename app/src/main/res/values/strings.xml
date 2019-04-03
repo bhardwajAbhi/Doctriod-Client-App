@@ -17,6 +17,8 @@
 
   <string name="DOB">DOB (MM/DD/YYYY)</string>
   <string name="meds_hint">Recognized Meds will appear here</string>
+  <string name="EMC">EMERGENCY CONTACTS</string>
+  <string name="EmergencyInfo">To Activate/Deactivate Accident Detection Service Press the button below</string>
 
 
   <string-array name="bloodType">

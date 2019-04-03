@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context=".emergency.EmergencyActivity"
+  android:background="@color/colorWhite">
+
+  <android.support.v7.widget.Toolbar
+    android:id="@+id/emergency_toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:elevation="5dp"
+    android:layout_alignParentTop="true"
+    android:background="@drawable/background_toolbar">
+
+    <ImageView
+      android:id="@+id/emergency_toolbar_iv_back"
+      android:layout_width="wrap_content"
+      android:layout_height="match_parent"
+      android:src="@drawable/ic_back_arrow"/>
+
+    <TextView
+      android:id="@+id/emergency_toolbar_tv_title"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/app_name"
+      android:textSize="20sp"
+      android:textColor="@color/colorWhite"
+      android:fontFamily="@font/helvetica"
+      android:textStyle="bold"
+      android:layout_gravity="center"/>
+
+  </android.support.v7.widget.Toolbar>
+
+
+  <LinearLayout
+    android:id="@+id/info_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/emergency_toolbar"
+    android:layout_margin="@dimen/margin_end"
+    android:padding="8dp"
+    android:background="@color/colorPeach">
+
+    <ImageView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:src="@drawable/ic_info"
+      android:layout_margin="2dp"/>
+
+    <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="2dp"
+      android:text="@string/EmergencyInfo"
+      android:fontFamily="@font/helvetica"
+      android:textColor="@color/colorRed"
+      android:textSize="16sp"
+      android:textAlignment="center"/>
+
+  </LinearLayout>
+
+
+  <android.support.v7.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true"
+    android:layout_margin="@dimen/margin_start"
+    app:cardCornerRadius="5dp"
+    android:elevation="8dp">
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical"
+      android:background="@drawable/background_edit_text_focus">
+
+        <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:background="@drawable/background_toolbar"
+          android:padding="8dp"
+          android:text="@string/EMC"
+          android:textAlignment="center"
+          android:textColor="@color/colorWhite"
+          android:textSize="20sp"
+          android:textStyle="bold"/>
+
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:layout_marginStart="@dimen/margin_start"
+        android:layout_marginTop="@dimen/margin_start"
+        android:text="Contact 1"
+        android:textAlignment="center"
+        android:textColor="@color/colorBlue"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
+
+      <EditText
+        android:id="@+id/emergency_edt_contact_one"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_start"
+        android:layout_marginEnd="@dimen/margin_end"
+        android:background="@color/colorLightGrey"
+        android:padding="8dp"
+        android:hint="Enter contact number"
+        android:inputType="phone"
+        android:maxLength="10"
+        android:singleLine="true"
+        android:textColor="@color/colorBlack"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+
+
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:layout_marginStart="@dimen/margin_start"
+        android:layout_marginTop="@dimen/margin_start"
+        android:text="Contact 2"
+        android:textAlignment="center"
+        android:textColor="@color/colorBlue"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
+
+      <EditText
+        android:id="@+id/emergency_edt_contact_two"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_start"
+        android:layout_marginEnd="@dimen/margin_end"
+        android:layout_marginBottom="@dimen/margin_start"
+        android:background="@color/colorLightGrey"
+        android:padding="8dp"
+        android:hint="Enter contact number"
+        android:inputType="phone"
+        android:maxLength="10"
+        android:singleLine="true"
+        android:textColor="@color/colorBlack"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_start"
+        >
+
+        <Button
+          android:id="@+id/emergency_btn_edit_contact"
+          android:layout_weight="1"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginEnd="4dp"
+          android:text="edit"
+          android:textSize="18sp"
+          android:drawableLeft="@drawable/ic_edit"
+          android:elevation="5dp"
+          android:padding="8dp"
+          android:textColor="@color/colorWhite"
+          android:background="@color/colorDarkBlue"/>
+
+        <Button
+          android:id="@+id/emergency_btn_save_contact"
+          android:layout_weight="1"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="4dp"
+          android:text="SAVE"
+          android:textSize="18sp"
+          android:elevation="5dp"
+          android:drawableLeft="@drawable/ic_save"
+          android:padding="8dp"
+          android:textColor="@color/colorWhite"
+          android:background="@color/colorDarkBlue"/>
+
+      </LinearLayout>
+
+
+    </LinearLayout>
+
+  </android.support.v7.widget.CardView>
+
+
+  <TextView
+    android:id="@+id/emergency_tv_status"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:background="@color/colorPeach"
+    android:paddingTop="38dp"
+    android:paddingBottom="10dp"
+    android:text="DEACTIVATED"
+    android:textColor="@color/colorRed"
+    android:textStyle="bold"
+    android:textSize="18sp"
+    android:textAlignment="center"/>
+
+
+  <ImageButton
+    android:id="@+id/emergency_fab_on_off"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:elevation="5dp"
+    android:layout_alignParentBottom="true"
+    android:layout_centerInParent="true"
+    android:layout_marginBottom="40dp"
+    android:src="@drawable/ic_power"
+    android:padding="8dp"
+    android:background="@color/colorRed"/>
+
+
+</RelativeLayout>

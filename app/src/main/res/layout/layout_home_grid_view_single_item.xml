@@ -20,8 +20,8 @@
 
     <ImageView
       android:id="@+id/iv_icon"
-      android:layout_width="140dp"
-      android:layout_height="100dp"
+      android:layout_width="115dp"
+      android:layout_height="115dp"
       android:src="@drawable/ic_find_doctor"
       android:adjustViewBounds="true"/>
 
