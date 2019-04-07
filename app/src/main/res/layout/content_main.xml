@@ -32,12 +32,10 @@
 
 
   </android.support.v7.widget.Toolbar>
-
-    <GridView
+      <GridView
       android:id="@+id/home_grid_view"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:layout_marginTop="@dimen/margin_start"
       android:padding="@dimen/margin_start"
       android:gravity="center"
       android:horizontalSpacing="-40dp"

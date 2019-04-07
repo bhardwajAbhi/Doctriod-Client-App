@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:background="@color/colorWhite"
+  android:orientation="vertical"
+  tools:context=".reminder.AddReminderActivity">
+
+  <android.support.v7.widget.Toolbar
+    android:id="@+id/add_rem_tool_bar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:layout_alignParentTop="true"
+    android:background="@drawable/background_toolbar"
+    android:elevation="5dp">
+
+    <ImageView
+      android:id="@+id/add_rem__toolbar_iv_back"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:src="@drawable/ic_back_arrow"/>
+
+    <TextView
+      android:id="@+id/add_rem_toolbar_tv_title"
+      android:textStyle="bold"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:fontFamily="@font/helvetica"
+      android:text="@string/app_name"
+      android:textColor="@color/colorWhite"
+      android:textSize="20sp"/>
+
+
+  </android.support.v7.widget.Toolbar>
+
+  <android.support.v4.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      android:padding="16dp">
+
+
+      <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="5dp"
+        app:cardCornerRadius="5dp"
+        android:layout_marginBottom="16dp">
+
+        <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:background="@drawable/background_edit_text_focus"
+          android:padding="16dp">
+
+          <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Medicine Name"
+            android:layout_marginBottom="8dp"
+            android:textAlignment="center"
+            android:textColor="@color/colorBlue"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"/>
+
+          <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/colorGrey"
+            android:layout_marginBottom="8dp"/>
+
+          <EditText
+            android:id="@+id/add_rem_edt_med_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="write here"
+            android:background="@color/colorLightGrey"
+            android:padding="8dp"
+            android:singleLine="true"
+            android:textColor="@color/colorBlack"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        </LinearLayout>
+
+
+
+      </android.support.v7.widget.CardView>
+
+      <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="5dp"
+        app:cardCornerRadius="5dp"
+        android:layout_marginBottom="16dp">
+
+        <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:background="@drawable/background_edit_text_focus"
+          android:padding="16dp">
+
+          <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dosage"
+            android:layout_marginBottom="8dp"
+            android:textAlignment="center"
+            android:textColor="@color/colorBlue"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"/>
+
+          <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/colorGrey"
+            android:layout_marginBottom="8dp"/>
+
+          <NumberPicker
+            android:id="@+id/add_rem_num_picker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
+
+
+
+      </android.support.v7.widget.CardView>
+
+      <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="5dp"
+        app:cardCornerRadius="5dp"
+        android:layout_marginBottom="16dp">
+
+        <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:background="@drawable/background_edit_text_focus"
+          android:padding="16dp">
+
+          <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Days"
+            android:layout_marginBottom="8dp"
+            android:textAlignment="center"
+            android:textColor="@color/colorBlue"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"/>
+
+          <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/colorGrey"
+            android:layout_marginBottom="8dp"/>
+
+          <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+
+            <RadioButton
+              android:id="@+id/rdo_everyday"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Everyday"
+              android:textSize="18sp"
+              android:layout_marginEnd="16dp"/>
+
+
+            <RadioButton
+              android:layout_marginStart="@dimen/margin_start"
+              android:id="@+id/rdo_specific_days"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textSize="18sp"
+              android:text="Specific days"/>
+
+          </RadioGroup>
+
+          <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+
+            <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Selected Days:"/>
+
+            <TextView
+              android:id="@+id/add_rem_tv_selected_stats"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginStart="8dp"
+              android:textColor="@color/colorGreen"
+              android:hint="Selected days will appear here"/>
+
+
+          </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+
+
+
+      </android.support.v7.widget.CardView>
+
+      <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="5dp"
+        app:cardCornerRadius="5dp"
+        android:layout_marginBottom="16dp">
+
+        <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:background="@drawable/background_edit_text_focus"
+          android:padding="16dp">
+
+          <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Time"
+            android:layout_marginBottom="8dp"
+            android:textAlignment="center"
+            android:textColor="@color/colorBlue"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"/>
+
+          <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/colorGrey"
+            android:layout_marginBottom="8dp"/>
+
+          <TimePicker
+            android:id="@+id/add_rem_time_picker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#ffffff" />
+
+        </LinearLayout>
+
+
+
+
+
+      </android.support.v7.widget.CardView>
+
+      <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="5dp"
+        app:cardCornerRadius="5dp"
+        android:layout_marginBottom="16dp">
+
+        <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:background="@drawable/background_edit_text_focus"
+          android:padding="16dp">
+
+          <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Extra Notes"
+            android:layout_marginBottom="8dp"
+            android:textAlignment="center"
+            android:textColor="@color/colorBlue"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"/>
+
+          <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/colorGrey"
+            android:layout_marginBottom="8dp"/>
+
+          <EditText
+            android:id="@+id/add_rem_edt_msg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/note_hint"
+            android:background="@color/colorLightGrey"
+            android:padding="8dp"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"/>
+
+        </LinearLayout>
+
+
+
+      </android.support.v7.widget.CardView>
+
+
+      <Button
+        android:id="@+id/add_rem_btn_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_alignParentBottom="true"
+        android:text="Add Reminder"
+        android:textSize="18sp"
+        android:textAllCaps="false"
+        android:background="@drawable/background_gradient_button"
+        android:textColor="@color/colorWhite"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </LinearLayout>
+
+
+
+  </android.support.v4.widget.NestedScrollView>
+
+</LinearLayout>

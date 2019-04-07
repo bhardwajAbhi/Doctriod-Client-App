@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:padding="8dp">
+
+  <RadioButton
+    android:id="@+id/rdmon"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:buttonTint="@color/colorBlue"
+    android:text="Monday"/>
+
+  <RadioButton
+    android:id="@+id/rdtue"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:buttonTint="@color/colorBlue"
+    android:text="Tuesday"/>
+
+  <RadioButton
+    android:id="@+id/rdwed"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:buttonTint="@color/colorBlue"
+    android:text="Wednesday"/>
+
+  <RadioButton
+    android:id="@+id/rdthu"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:buttonTint="@color/colorBlue"
+    android:text="Thursday"/>
+
+  <RadioButton
+    android:id="@+id/rdfri"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:buttonTint="@color/colorBlue"
+    android:text="Friday"/>
+
+  <RadioButton
+    android:id="@+id/rdsat"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:buttonTint="@color/colorBlue"
+    android:text="Saturday"/>
+
+  <RadioButton
+    android:id="@+id/rdsun"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:buttonTint="@color/colorBlue"
+    android:text="Sunday"/>
+
+  <Button
+    android:id="@+id/btn_okay"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background_gradient_button"
+    android:textColor="#ffffff"
+    android:text="Confirm"/>
+
+</LinearLayout>

@@ -23,6 +23,7 @@ import apps.abhibhardwaj.com.doctriod.patient.R;
 import apps.abhibhardwaj.com.doctriod.patient.nearby.NearbyActivity;
 import apps.abhibhardwaj.com.doctriod.patient.others.Utils;
 import apps.abhibhardwaj.com.doctriod.patient.recognizemeds.RecognizeMedsActivity;
+import apps.abhibhardwaj.com.doctriod.patient.reminder.PillReminderActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -91,7 +92,7 @@ public class HomeActivity extends AppCompatActivity implements OnClickListener {
           }
           case 4:
           {
-            Utils.makeToast(HomeActivity.this, "you clicked item " + position);
+            startActivity(new Intent(HomeActivity.this, PillReminderActivity.class));
             break;
           }
           case 5:

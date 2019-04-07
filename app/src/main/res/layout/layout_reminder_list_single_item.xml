@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:orientation="vertical"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content">
+
+  <android.support.v7.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="5dp"
+    app:cardCornerRadius="5dp"
+    android:layout_margin="16dp">
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical"
+      android:padding="16dp">
+
+
+      <TextView
+        android:id="@+id/rem_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Aspirin tab"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorBlack"
+        />
+
+      <TextView
+        android:id="@+id/rem_dosage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="2 Tablet"
+        android:textSize="16sp"
+        />
+
+      <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp">
+
+        <TextView
+          android:id="@+id/rem_time"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="10 : 00 AM"
+          android:textSize="16sp"
+          />
+
+        <View
+          android:background="@color/colorGrey"
+          android:layout_width="2dp"
+          android:layout_height="match_parent"
+          android:layout_marginStart="4dp"
+          android:layout_marginEnd="4dp"/>
+
+        <TextView
+          android:id="@+id/rem_day"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Everyday"
+          android:textSize="16sp"
+          />
+
+
+
+      </LinearLayout>
+
+      <TextView
+        android:id="@+id/rem_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="After Lunch time"
+        android:textSize="16sp"
+        />
+
+      <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end">
+
+        <ImageView
+          android:id="@+id/rem_edit"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:src="@drawable/ic_edit"
+          android:tint="@color/colorBlue"
+          android:layout_marginEnd="8dp"/>
+
+        <ImageView
+          android:id="@+id/rem_delete"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:src="@drawable/ic_delete"
+          android:tint="@color/colorBlue"/>
+
+      </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+  </android.support.v7.widget.CardView>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</LinearLayout>

@@ -20,9 +20,12 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.support.v7.widget.Toolbar;
 import apps.abhibhardwaj.com.doctriod.patient.R;
+import apps.abhibhardwaj.com.doctriod.patient.home.HomeActivity;
 import apps.abhibhardwaj.com.doctriod.patient.others.Utils;
 import java.io.BufferedReader;
 import java.io.File;
@@ -34,6 +37,9 @@ import java.io.OutputStreamWriter;
 
 public class EmergencyActivity extends AppCompatActivity implements OnClickListener {
 
+  private Toolbar toolbar;
+  private ImageView ivBack;
+  private TextView tvToolbarTitle;
 
   private static String firstN, secondN;
   private int flag = 1;
@@ -57,6 +63,7 @@ public class EmergencyActivity extends AppCompatActivity implements OnClickListe
     }
     else
     {
+      initToolbar();
       initViews();
       initActionListeners();
       loadEmergencyContacts();
@@ -78,6 +85,7 @@ public class EmergencyActivity extends AppCompatActivity implements OnClickListe
               && grantResults[0] == PackageManager.PERMISSION_GRANTED
               && grantResults[1] == PackageManager.PERMISSION_GRANTED)
         {
+          initToolbar();
           initViews();
           initActionListeners();
           loadEmergencyContacts();
@@ -92,10 +100,19 @@ public class EmergencyActivity extends AppCompatActivity implements OnClickListe
 
   }
 
+  private void initToolbar() {
+    toolbar = findViewById(R.id.emergency_toolbar);
+    tvToolbarTitle = findViewById(R.id.emergency_toolbar_tv_title);
+    setSupportActionBar(toolbar);
+    tvToolbarTitle.setText("Emergency");
+    getSupportActionBar().setDisplayShowTitleEnabled(false);
+  }
+
   private void initActionListeners() {
     //action listeners
     btnEdit.setOnClickListener(this);
     btnTrack.setOnClickListener(this);
+    ivBack.setOnClickListener(this);
 
     if (btnSave != null) {
       btnSave.setOnClickListener(this);
@@ -111,6 +128,8 @@ public class EmergencyActivity extends AppCompatActivity implements OnClickListe
 
     btnTrack = findViewById(R.id.emergency_fab_on_off);
     txtStatus = findViewById(R.id.emergency_tv_status);
+
+    ivBack = findViewById(R.id.emergency_toolbar_iv_back);
   }
 
 
@@ -127,6 +146,12 @@ public class EmergencyActivity extends AppCompatActivity implements OnClickListe
 
     if (v == btnEdit) {
       editEmergencyContacts();
+    }
+
+    if (v == ivBack)
+    {
+      startActivity(new Intent(EmergencyActivity.this, HomeActivity.class));
+      finish();
     }
 
   }

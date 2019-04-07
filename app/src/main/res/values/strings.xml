@@ -19,6 +19,8 @@
   <string name="meds_hint">Recognized Meds will appear here</string>
   <string name="EMC">EMERGENCY CONTACTS</string>
   <string name="EmergencyInfo">To Activate/Deactivate Accident Detection Service Press the button below</string>
+  <string name="reminder_hint">Set a reminder for medicine to continue</string>
+  <string name="note_hint">Example: After Lunch etc</string>
 
 
   <string-array name="bloodType">
@@ -37,6 +39,10 @@
     <item>Female</item>
     <item>Male</item>
   </string-array>
+
+
+
+  <string name="number_picker_formatter">%02d</string>
 
 
 </resources>
