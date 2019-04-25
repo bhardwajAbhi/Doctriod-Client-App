@@ -40,9 +40,14 @@
     <item>Male</item>
   </string-array>
 
+  <string-array name="status">
+    <item>Married</item>
+    <item>Unmarried</item>
+  </string-array>
 
 
   <string name="number_picker_formatter">%02d</string>
+  <string name="dummy_mail">username@email.com</string>
 
 
 </resources>

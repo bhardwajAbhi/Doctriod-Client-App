@@ -6,6 +6,9 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -41,6 +44,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask.TaskSnapshot;
 import de.hdodenhof.circleimageview.CircleImageView;
+import java.io.ByteArrayOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -319,6 +323,21 @@ public class SignUpActivity extends AppCompatActivity implements OnClickListener
     progressDialog.setMessage("Signing Up, Please Wait...");
     progressDialog.show();
 
+    // image compression
+    Bitmap bitmap = null;
+    try
+    {
+      bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), capImageURI);
+    }
+    catch (Exception e)
+    {
+      e.printStackTrace();
+    }
+
+    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+    // bitmap = Bitmap.createScaledBitmap(bitmap, 150, 150, false);
+    bitmap.compress(CompressFormat.JPEG, 20, outputStream);
+    final byte [] fileInBytes = outputStream.toByteArray();
 
 
     //create user
@@ -330,7 +349,7 @@ public class SignUpActivity extends AppCompatActivity implements OnClickListener
             if (task.isSuccessful())
             {
               final StorageReference filePath = storageReference.child(auth.getCurrentUser().getUid()).child("ProfilePic").child(capImageURI.getLastPathSegment());
-              filePath.putFile(capImageURI).addOnSuccessListener(new OnSuccessListener<TaskSnapshot>() {
+              filePath.putBytes(fileInBytes).addOnSuccessListener(new OnSuccessListener<TaskSnapshot>() {
                 @Override
                 public void onSuccess(TaskSnapshot taskSnapshot) {
                   filePath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -358,8 +377,6 @@ public class SignUpActivity extends AppCompatActivity implements OnClickListener
                 }
               });
             }
-            
-            
           }
         }).addOnFailureListener(new OnFailureListener() {
       @Override
@@ -368,8 +385,6 @@ public class SignUpActivity extends AppCompatActivity implements OnClickListener
         Utils.makeToast(SignUpActivity.this, e.getMessage());
       }
     });
-
-
   }
 
 

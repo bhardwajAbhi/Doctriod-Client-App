@@ -8,6 +8,7 @@ public class User {
   private String email;
   private String phone;
   private String doB;
+  private String status;
   private String gender;
   private String bloodGrp;
   private String height;
@@ -105,5 +106,14 @@ public class User {
 
   public void setAddress(String address) {
     this.address = address;
+  }
+
+
+  public String getStatus() {
+    return status;
+  }
+
+  public void setStatus(String status) {
+    this.status = status;
   }
 }

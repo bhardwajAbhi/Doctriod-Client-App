@@ -110,6 +110,7 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener 
               dialog.dismiss();
               Snackbar.make(findViewById(android.R.id.content),  "Welcome " + email, Snackbar.LENGTH_LONG).show();
               startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+              finish();
             }
           }
         }).addOnFailureListener(this, new OnFailureListener() {

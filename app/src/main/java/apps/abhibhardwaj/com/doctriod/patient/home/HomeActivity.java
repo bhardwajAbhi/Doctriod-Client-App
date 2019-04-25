@@ -6,11 +6,13 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.NavigationView.OnNavigationItemSelectedListener;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -22,8 +24,10 @@ import apps.abhibhardwaj.com.doctriod.patient.emergency.EmergencyActivity;
 import apps.abhibhardwaj.com.doctriod.patient.R;
 import apps.abhibhardwaj.com.doctriod.patient.nearby.NearbyActivity;
 import apps.abhibhardwaj.com.doctriod.patient.others.Utils;
+import apps.abhibhardwaj.com.doctriod.patient.profile.ProfileActivity;
 import apps.abhibhardwaj.com.doctriod.patient.recognizemeds.RecognizeMedsActivity;
 import apps.abhibhardwaj.com.doctriod.patient.reminder.PillReminderActivity;
+import apps.abhibhardwaj.com.doctriod.patient.startup.LoginActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -34,7 +38,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class HomeActivity extends AppCompatActivity implements OnClickListener {
+public class HomeActivity extends AppCompatActivity implements OnClickListener,
+    OnNavigationItemSelectedListener {
 
   private Toolbar toolbar;
   private TextView tvTitle, tvUserName, tvUserEmail;
@@ -45,6 +50,7 @@ public class HomeActivity extends AppCompatActivity implements OnClickListener {
   GridView gridView;
   HomeGridAdapter adapter;
 
+  FirebaseAuth auth;
   FirebaseUser currentUser;
   DatabaseReference databaseReference;
 
@@ -116,7 +122,8 @@ public class HomeActivity extends AppCompatActivity implements OnClickListener {
   }
 
   private void initFireBase() {
-    currentUser = FirebaseAuth.getInstance().getCurrentUser();
+    auth = FirebaseAuth.getInstance();
+    currentUser = auth.getCurrentUser();
     databaseReference = FirebaseDatabase.getInstance().getReference().child("Database")
         .child("Users");
   }
@@ -124,6 +131,7 @@ public class HomeActivity extends AppCompatActivity implements OnClickListener {
   private void addClickListeners() {
     ivClose.setOnClickListener(this);
     ivMenu.setOnClickListener(this);
+    navigationView.setNavigationItemSelectedListener(this);
   }
 
   private void initViews() {
@@ -212,5 +220,32 @@ public class HomeActivity extends AppCompatActivity implements OnClickListener {
       }
     }
 
+  }
+
+  @Override
+  public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+
+    switch (menuItem.getItemId())
+    {
+      case R.id.nav_item_profile:
+      {
+        startActivity(new Intent(HomeActivity.this, ProfileActivity.class));
+        break;
+      }
+
+      case R.id.nav_item_logout:
+      {
+        auth.signOut();
+        startActivity(new Intent(HomeActivity.this, LoginActivity.class));
+        finish();
+        break;
+      }
+
+      default:
+      {
+        return false;
+      }
+    }
+    return true;
   }
 }
