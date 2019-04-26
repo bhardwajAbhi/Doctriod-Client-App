@@ -48,6 +48,7 @@
 
   <string name="number_picker_formatter">%02d</string>
   <string name="dummy_mail">username@email.com</string>
+  <string name="vdoc">Virtual Doctor\n Always ready to help you..</string>
 
 
 </resources>

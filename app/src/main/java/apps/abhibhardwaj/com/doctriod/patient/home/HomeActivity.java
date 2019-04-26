@@ -20,6 +20,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import apps.abhibhardwaj.com.doctriod.patient.appointments.AppointmentsActivity;
 import apps.abhibhardwaj.com.doctriod.patient.emergency.EmergencyActivity;
 import apps.abhibhardwaj.com.doctriod.patient.R;
 import apps.abhibhardwaj.com.doctriod.patient.nearby.NearbyActivity;
@@ -28,6 +29,7 @@ import apps.abhibhardwaj.com.doctriod.patient.profile.ProfileActivity;
 import apps.abhibhardwaj.com.doctriod.patient.recognizemeds.RecognizeMedsActivity;
 import apps.abhibhardwaj.com.doctriod.patient.reminder.PillReminderActivity;
 import apps.abhibhardwaj.com.doctriod.patient.startup.LoginActivity;
+import apps.abhibhardwaj.com.doctriod.patient.vdoctor.VDoctorActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -83,7 +85,7 @@ public class HomeActivity extends AppCompatActivity implements OnClickListener,
           }
           case 1:
           {
-            Utils.makeToast(HomeActivity.this, "you clicked item " + position);
+            startActivity(new Intent(HomeActivity.this, AppointmentsActivity.class));
             break;
           }
           case 2:
@@ -113,7 +115,7 @@ public class HomeActivity extends AppCompatActivity implements OnClickListener,
           }
           case 7:
           {
-            Utils.makeToast(HomeActivity.this, "you clicked item " + position);
+            startActivity(new Intent(HomeActivity.this, VDoctorActivity.class));
             break;
           }
         }
