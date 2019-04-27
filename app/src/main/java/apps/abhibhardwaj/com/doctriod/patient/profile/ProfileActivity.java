@@ -15,6 +15,7 @@ import android.widget.Toast;
 import apps.abhibhardwaj.com.doctriod.patient.R;
 import apps.abhibhardwaj.com.doctriod.patient.home.HomeActivity;
 import apps.abhibhardwaj.com.doctriod.patient.models.User;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -22,6 +23,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -38,7 +41,7 @@ public class ProfileActivity extends AppCompatActivity implements OnClickListene
 
   private FirebaseAuth auth;
   private FirebaseUser currentUser;
-  private DatabaseReference databaseReference;
+  private FirebaseFirestore db;
   private User user = null;
 
 
@@ -71,7 +74,7 @@ public class ProfileActivity extends AppCompatActivity implements OnClickListene
   private void initFireBase() {
     auth = FirebaseAuth.getInstance();
     currentUser = auth.getCurrentUser();
-    databaseReference = FirebaseDatabase.getInstance().getReference().child("Database").child("Users").child(currentUser.getUid());
+    db = FirebaseFirestore.getInstance();
   }
 
   private void intViews() {
@@ -101,22 +104,16 @@ public class ProfileActivity extends AppCompatActivity implements OnClickListene
 
   private void fetchUserDetails() {
     progressDialog.show();
-    databaseReference.addValueEventListener(new ValueEventListener() {
-      @Override
-      public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-        for(DataSnapshot ds : dataSnapshot.getChildren()) {
-          user = ds.getValue(User.class);
-          loadUserDetails(user);
-        }
-      }
+    db.collection("users").document(currentUser.getUid()).get().addOnSuccessListener(
+        new OnSuccessListener<DocumentSnapshot>() {
+          @Override
+          public void onSuccess(DocumentSnapshot documentSnapshot) {
 
-      @Override
-      public void onCancelled(@NonNull DatabaseError databaseError) {
-
-      }
-    });
+            User user = documentSnapshot.toObject(User.class);
+            loadUserDetails(user);
+          }
+        });
   }
-
   private void loadUserDetails(User user) {
     Picasso.get().load(user.getProfileImageURL()).into(ivUserImage);
     tvFullName.setText(user.getFullName());

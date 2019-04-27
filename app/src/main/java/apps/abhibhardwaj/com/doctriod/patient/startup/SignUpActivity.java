@@ -40,6 +40,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask.TaskSnapshot;
@@ -64,7 +65,8 @@ public class SignUpActivity extends AppCompatActivity implements OnClickListener
   private Uri capImageURI;
 
   private FirebaseAuth auth;
-  private DatabaseReference databaseReference;
+  private FirebaseFirestore db;
+  // private DatabaseReference databaseReference;
   private StorageReference storageReference;
 
   @Override
@@ -73,7 +75,8 @@ public class SignUpActivity extends AppCompatActivity implements OnClickListener
     setContentView(R.layout.activity_sign_up);
     
     auth = FirebaseAuth.getInstance();
-    databaseReference = FirebaseDatabase.getInstance().getReference().child("Database").child("Users");
+    db = FirebaseFirestore.getInstance();
+    // databaseReference = FirebaseDatabase.getInstance().getReference().child("Database").child("Users");
     storageReference = FirebaseStorage.getInstance().getReference().child("Database").child("Users");
     initializeViews();
     addClickListeners();
@@ -365,13 +368,31 @@ public class SignUpActivity extends AppCompatActivity implements OnClickListener
                       user.setProfileImageURL(uri.toString());
                       user.setProfileImageName(capImageURI.getLastPathSegment());
 
-                      databaseReference.child(auth.getCurrentUser().getUid()).child("BasicDetails").setValue(user);
+                      // databaseReference.child(auth.getCurrentUser().getUid()).child("BasicDetails").setValue(user);
+                      db.collection("users").document(auth.getCurrentUser().getUid()).set(user).addOnSuccessListener(
+                          new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                              progressDialog.dismiss();
+                              Utils.makeToast(SignUpActivity.this, "Registered Successfully !!");
+                              startActivity(new Intent(SignUpActivity.this, HomeActivity.class));
+                              finish();
+                            }
+                          }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+
+                        }
+                      }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                          progressDialog.dismiss();
+
+                          Utils.makeToast(SignUpActivity.this, e.getMessage());
+                        }
+                      });
 
 
-                      progressDialog.dismiss();
-                      Utils.makeToast(SignUpActivity.this, "Registered Successfully !!");
-                      startActivity(new Intent(SignUpActivity.this, HomeActivity.class));
-                      finish();
                     }
                   });
                 }

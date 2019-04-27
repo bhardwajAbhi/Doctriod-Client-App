@@ -4,9 +4,10 @@ import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,16 +17,12 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import apps.abhibhardwaj.com.doctriod.patient.R;
-import apps.abhibhardwaj.com.doctriod.patient.home.HomeActivity;
-import apps.abhibhardwaj.com.doctriod.patient.models.User;
 import apps.abhibhardwaj.com.doctriod.patient.others.Utils;
-import apps.abhibhardwaj.com.doctriod.patient.reminder.AddReminderActivity;
-import apps.abhibhardwaj.com.doctriod.patient.reminder.PillReminderActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -39,8 +36,7 @@ public class EditProfileActivity extends AppCompatActivity implements OnClickLis
 
 
   private FirebaseAuth auth;
-  private DatabaseReference databaseReference;
-  private StorageReference storageReference;
+  private FirebaseFirestore db;
 
   private ProgressDialog progressDialog;
 
@@ -58,12 +54,10 @@ public class EditProfileActivity extends AppCompatActivity implements OnClickLis
 
   private void initFireBase() {
     auth = FirebaseAuth.getInstance();
-    databaseReference = FirebaseDatabase.getInstance().getReference().child("Database").child("Users");
-    storageReference = FirebaseStorage.getInstance().getReference().child("Database").child("Users");
+    db = FirebaseFirestore.getInstance();
   }
 
   private void intViews() {
-
 
     progressDialog = new ProgressDialog(EditProfileActivity.this);
 
@@ -100,23 +94,19 @@ public class EditProfileActivity extends AppCompatActivity implements OnClickLis
   @Override
   public void onClick(View v) {
 
-    switch (v.getId())
-    {
+    switch (v.getId()) {
 
-      case R.id.edit_profile_btn_save:
-      {
+      case R.id.edit_profile_btn_save: {
         saveUserDetails();
         break;
       }
 
-      case R.id.edit_profile_btn_close:
-      {
+      case R.id.edit_profile_btn_close: {
         closeActivity();
         break;
       }
 
-      case R.id.edit_profile_dob:
-      {
+      case R.id.edit_profile_dob: {
         selectDOB();
         break;
       }
@@ -143,7 +133,6 @@ public class EditProfileActivity extends AppCompatActivity implements OnClickLis
         }, year, month, day);
     picker.show();
   }
-
 
 
   private void closeActivity() {
@@ -174,7 +163,6 @@ public class EditProfileActivity extends AppCompatActivity implements OnClickLis
     final String status = spStatus.getSelectedItem().toString();
     final String gender = spGender.getSelectedItem().toString();
     final String bloodGrp = spBloodGrp.getSelectedItem().toString();
-
 
     if (fullName.isEmpty()) {
       edtName.setError("Enter a valid Name");
@@ -211,8 +199,6 @@ public class EditProfileActivity extends AppCompatActivity implements OnClickLis
       return;
     }
 
-
-
     //if everything is Ok
     progressDialog.setMessage("Saving details, Please Wait...");
     progressDialog.show();
@@ -230,32 +216,36 @@ public class EditProfileActivity extends AppCompatActivity implements OnClickLis
 
     String userID = auth.getCurrentUser().getUid();
 
-    databaseReference.child(userID).child("BasicDetails").child("fullName").setValue(fullName);
+    db.collection("users").document(userID).update("fullName", fullName,
+        "phone", phone,
+        "doB", DoB,
+        "gender", gender,
+        "bloodGrp", bloodGrp,
+        "height", height,
+        "weight", weight,
+        "address", address,
+        "status", status).addOnCompleteListener(new OnCompleteListener<Void>() {
+      @Override
+      public void onComplete(@NonNull Task<Void> task) {
+        if (task.isSuccessful())
+        {
+          progressDialog.dismiss();
+          Utils.makeToast(EditProfileActivity.this, "Details Saved Successfully !!");
 
-    databaseReference.child(userID).child("BasicDetails").child("phone").setValue(phone);
+          startActivity(new Intent(EditProfileActivity.this, ProfileActivity.class));
+          finish();
+        }
+      }
+    }).addOnFailureListener(new OnFailureListener() {
+      @Override
+      public void onFailure(@NonNull Exception e) {
 
-    databaseReference.child(userID).child("BasicDetails").child("doB").setValue(DoB);
-
-    databaseReference.child(userID).child("BasicDetails").child("gender").setValue(gender);
-
-    databaseReference.child(userID).child("BasicDetails").child("bloodGrp").setValue(bloodGrp);
-
-    databaseReference.child(userID).child("BasicDetails").child("height").setValue(height);
-
-    databaseReference.child(userID).child("BasicDetails").child("weight").setValue(weight);
-
-    databaseReference.child(userID).child("BasicDetails").child("address").setValue(address);
-
-    databaseReference.child(userID).child("BasicDetails").child("status").setValue(status);
+        progressDialog.dismiss();
+        Utils.makeToast(EditProfileActivity.this, e.getMessage());
+      }
+    });
 
 
-
-    progressDialog.dismiss();
-    Utils.makeToast(EditProfileActivity.this, "Details Saved Successfully !!");
-
-
-    startActivity(new Intent(EditProfileActivity.this, ProfileActivity.class));
-    finish();
 
 
   }

@@ -23,6 +23,7 @@ import android.widget.TextView;
 import apps.abhibhardwaj.com.doctriod.patient.appointments.AppointmentsActivity;
 import apps.abhibhardwaj.com.doctriod.patient.emergency.EmergencyActivity;
 import apps.abhibhardwaj.com.doctriod.patient.R;
+import apps.abhibhardwaj.com.doctriod.patient.models.User;
 import apps.abhibhardwaj.com.doctriod.patient.nearby.NearbyActivity;
 import apps.abhibhardwaj.com.doctriod.patient.others.Utils;
 import apps.abhibhardwaj.com.doctriod.patient.profile.ProfileActivity;
@@ -30,6 +31,8 @@ import apps.abhibhardwaj.com.doctriod.patient.recognizemeds.RecognizeMedsActivit
 import apps.abhibhardwaj.com.doctriod.patient.reminder.PillReminderActivity;
 import apps.abhibhardwaj.com.doctriod.patient.startup.LoginActivity;
 import apps.abhibhardwaj.com.doctriod.patient.vdoctor.VDoctorActivity;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -37,6 +40,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -49,12 +54,13 @@ public class HomeActivity extends AppCompatActivity implements OnClickListener,
   private CircleImageView ivUserProfile;
   private DrawerLayout drawerLayout;
   private NavigationView navigationView;
-  GridView gridView;
-  HomeGridAdapter adapter;
+  private GridView gridView;
+  private HomeGridAdapter adapter;
 
-  FirebaseAuth auth;
-  FirebaseUser currentUser;
-  DatabaseReference databaseReference;
+  private FirebaseAuth auth;
+  private FirebaseUser currentUser;
+  private FirebaseFirestore db;
+
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -126,8 +132,7 @@ public class HomeActivity extends AppCompatActivity implements OnClickListener,
   private void initFireBase() {
     auth = FirebaseAuth.getInstance();
     currentUser = auth.getCurrentUser();
-    databaseReference = FirebaseDatabase.getInstance().getReference().child("Database")
-        .child("Users");
+    db = FirebaseFirestore.getInstance();
   }
 
   private void addClickListeners() {
@@ -148,22 +153,23 @@ public class HomeActivity extends AppCompatActivity implements OnClickListener,
   }
 
   private void initNavHeader() {
-    databaseReference.child(currentUser.getUid()).child("BasicDetails").addValueEventListener(
-        new ValueEventListener() {
-          @Override
-          public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-            tvUserName.setText(dataSnapshot.child("fullName").getValue().toString());
-            tvUserEmail.setText(dataSnapshot.child("email").getValue().toString());
-            Picasso.get()
-                .load(Uri.parse(dataSnapshot.child("profileImageURL").getValue().toString()))
-                .into(ivUserProfile);
-          }
+   db.collection("users").document(currentUser.getUid()).get().addOnSuccessListener(
+       new OnSuccessListener<DocumentSnapshot>() {
+         @Override
+         public void onSuccess(DocumentSnapshot documentSnapshot) {
+           User user = documentSnapshot.toObject(User.class);
+           tvUserName.setText(user.getFullName());
+           tvUserEmail.setText(user.getEmail());
 
-          @Override
-          public void onCancelled(@NonNull DatabaseError databaseError) {
+           Picasso.get().load(user.getProfileImageURL()).into(ivUserProfile);
 
-          }
-        });
+         }
+       }).addOnFailureListener(new OnFailureListener() {
+     @Override
+     public void onFailure(@NonNull Exception e) {
+       Utils.makeToast(HomeActivity.this, e.getMessage());
+     }
+   });
   }
 
 
