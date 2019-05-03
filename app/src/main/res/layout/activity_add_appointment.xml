@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context=".appointments.AddAppointmentActivity">
+
+  <android.support.v7.widget.Toolbar
+    android:id="@+id/add_appointment_tool_bar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:elevation="5dp"
+    android:layout_alignParentTop="true"
+    android:background="@drawable/background_toolbar">
+
+    <ImageView
+      android:id="@+id/add_appointment_toolbar_iv_back"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:src="@drawable/ic_back_arrow"/>
+
+    <TextView
+    android:id="@+id/add_appointment_toolbar_tv_title"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Add Appointment"
+    android:textSize="20sp"
+    android:textColor="@color/colorWhite"
+    android:fontFamily="@font/helvetica"
+    android:textStyle="bold"
+    android:layout_gravity="center"/>
+
+
+  </android.support.v7.widget.Toolbar>
+
+  <com.shuhart.stepview.StepView
+    android:id="@+id/add_appointment_step_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/add_appointment_tool_bar"
+    android:padding="16dp"
+
+    app:sv_selectedCircleColor="@color/colorGreen"
+    app:sv_selectedTextColor="@color/colorBlue"
+    app:sv_stepLineWidth="1dp"
+    app:sv_stepPadding="4dp"
+
+    app:sv_nextTextColor="@color/colorDarkGrey"
+    app:sv_nextStepLineColor="@color/colorBlue"
+
+    app:sv_doneCircleColor="@color/colorGreen"
+    app:sv_doneStepLineColor="@color/colorGreen"
+    app:sv_doneCircleRadius="12dp"
+
+    app:sv_selectedCircleRadius="12dp"
+    app:sv_selectedStepNumberColor="@color/colorGreen"
+    app:sv_stepViewStyle="@style/StepView"
+    app:sv_doneStepMarkColor="@color/colorGreen"
+    app:sv_stepNumberTextSize="12sp"
+    android:background="@color/colorWhite"
+    app:sv_animationType="Circle"
+    app:sv_typeface="@font/helvetica"/>
+
+  <apps.abhibhardwaj.com.doctriod.patient.appointments.NonSwipeViewPager
+    android:id="@+id/add_appointment_view_pager"
+    android:layout_below="@id/add_appointment_step_view"
+    android:layout_above="@id/add_appointment_btn_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+  </apps.abhibhardwaj.com.doctriod.patient.appointments.NonSwipeViewPager>
+
+  <LinearLayout
+    android:id="@+id/add_appointment_btn_container"
+    android:layout_alignParentBottom="true"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <Button
+      android:id="@+id/add_appointment_btn_prev"
+      android:layout_weight="1"
+      android:layout_width="0dp"
+      android:text="Prev"
+      android:enabled="false"
+      android:textColor="@color/colorWhite"
+      android:layout_height="wrap_content"/>
+
+    <Button
+      android:id="@+id/add_appointment_btn_next"
+      android:layout_weight="1"
+      android:layout_width="0dp"
+      android:text="Next"
+      android:enabled="false"
+      android:textColor="@color/colorWhite"
+      android:layout_height="wrap_content"/>
+
+  </LinearLayout>
+
+</RelativeLayout>

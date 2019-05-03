@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/card_view_doc_type"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:elevation="8dp"
+  android:padding="@dimen/margin_start"
+  app:cardCornerRadius="5dp">
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:orientation="horizontal">
+
+
+    <apps.abhibhardwaj.com.doctriod.patient.home.LetterImageView
+      android:layout_width="20dp"
+      android:layout_height="match_parent"/>
+
+    <TextView
+      android:id="@+id/tv_docType"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textColor="@color/colorBlue"
+      android:textSize="18sp"
+      android:textAlignment="center"
+      android:layout_gravity="center"
+      android:layout_margin="8dp"
+      android:hint="doctor type"
+      android:textStyle="bold"/>
+
+  </LinearLayout>
+
+
+
+
+
+</android.support.v7.widget.CardView>

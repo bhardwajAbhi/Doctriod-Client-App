@@ -1,10 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<RelativeLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context=".appointments.AppointmentsActivity">
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  tools:context=".appointments.AppointmentsActivity"
+  android:background="@color/colorWhite">
 
-</android.support.constraint.ConstraintLayout>
+  <android.support.v7.widget.Toolbar
+    android:id="@+id/appointment_tool_bar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:elevation="5dp"
+    android:layout_alignParentTop="true"
+    android:background="@drawable/background_toolbar">
+
+    <ImageView
+      android:id="@+id/appointment_toolbar_iv_back"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:src="@drawable/ic_back_arrow"/>
+
+    p<TextView
+    android:id="@+id/appointment_toolbar_tv_title"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/app_name"
+    android:textSize="20sp"
+    android:textAllCaps="true"
+    android:textColor="@color/colorWhite"
+    android:fontFamily="@font/helvetica"
+    android:textStyle="bold"
+    android:layout_gravity="center"/>
+
+
+  </android.support.v7.widget.Toolbar>
+
+
+  <android.support.v7.widget.RecyclerView
+    android:visibility="gone"
+    android:id="@+id/appointment_recycler_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+    android:layout_below="@id/appointment_tool_bar"
+    android:layout_above="@id/appointment_btn_add_appointment">
+
+  </android.support.v7.widget.RecyclerView>
+
+
+  <LinearLayout
+    android:id="@+id/layout_linear_appointment_empty_view"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_centerInParent="true"
+    android:gravity="center">
+
+    <ImageView
+      android:layout_width="150dp"
+      android:layout_height="150dp"
+      android:src="@drawable/img_intro_three"/>
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="You have no appointments."
+      android:textColor="@color/colorBlack"
+      android:padding="8dp"
+      android:textStyle="bold"
+      android:textSize="18sp"/>
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/appoint_hint"
+      android:textSize="14sp"/>
+
+  </LinearLayout>
+
+
+  <Button
+    android:id="@+id/appointment_btn_add_appointment"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:layout_alignParentBottom="true"
+    android:text="Create Appointment"
+    android:textSize="18sp"
+    android:textAllCaps="false"
+    android:background="@drawable/background_gradient_button"
+    android:textColor="@color/colorWhite"/>
+
+
+
+
+
+
+</RelativeLayout>

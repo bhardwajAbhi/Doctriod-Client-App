@@ -2,7 +2,6 @@ package apps.abhibhardwaj.com.doctriod.patient.home;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -23,6 +22,7 @@ import android.widget.TextView;
 import apps.abhibhardwaj.com.doctriod.patient.appointments.AppointmentsActivity;
 import apps.abhibhardwaj.com.doctriod.patient.emergency.EmergencyActivity;
 import apps.abhibhardwaj.com.doctriod.patient.R;
+import apps.abhibhardwaj.com.doctriod.patient.findoc.FindDoctorActivity;
 import apps.abhibhardwaj.com.doctriod.patient.models.User;
 import apps.abhibhardwaj.com.doctriod.patient.nearby.NearbyActivity;
 import apps.abhibhardwaj.com.doctriod.patient.others.Utils;
@@ -35,11 +35,6 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
@@ -86,7 +81,7 @@ public class HomeActivity extends AppCompatActivity implements OnClickListener,
         {
           case 0:
           {
-            Utils.makeToast(HomeActivity.this, "you clicked item " + position);
+            startActivity(new Intent(HomeActivity.this, FindDoctorActivity.class));
             break;
           }
           case 1:
