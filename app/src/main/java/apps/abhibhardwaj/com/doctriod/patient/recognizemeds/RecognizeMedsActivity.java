@@ -2,18 +2,25 @@ package apps.abhibhardwaj.com.doctriod.patient.recognizemeds;
 
 import android.Manifest;
 import android.Manifest.permission;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import apps.abhibhardwaj.com.doctriod.patient.R;
+import apps.abhibhardwaj.com.doctriod.patient.others.Utils;
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector.Detections;
 import com.google.android.gms.vision.Detector.Processor;
@@ -21,12 +28,17 @@ import com.google.android.gms.vision.text.TextBlock;
 import com.google.android.gms.vision.text.TextRecognizer;
 import java.io.IOException;
 
-public class RecognizeMedsActivity extends AppCompatActivity {
+public class RecognizeMedsActivity extends AppCompatActivity implements OnClickListener {
 
   private static final String TAG = "RegMedActivity";
   private SurfaceView cameraView;
   private TextView textView;
   private CameraSource cameraSource;
+  private Button btnSearch;
+
+  private Toolbar toolbar;
+  private ImageView ivBack;
+  private TextView tvToolbarTitle;
 
   private static final int REQUEST_CAMERA = 10;
 
@@ -35,11 +47,32 @@ public class RecognizeMedsActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_recognize_meds);
 
-    cameraView = findViewById(R.id.surface_view);
-    textView = findViewById(R.id.text_view);
-
+    initToolbar();
+    iniViews();
     startCameraSource();
   }
+
+  private void initToolbar() {
+    toolbar = findViewById(R.id.reg_meds_tool_bar);
+    tvToolbarTitle = findViewById(R.id.reg_meds_tv_title);
+    setSupportActionBar(toolbar);
+    tvToolbarTitle.setText("Recognize Medicine");
+    getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+  }
+
+  private void iniViews() {
+    cameraView = findViewById(R.id.surface_view);
+    textView = findViewById(R.id.text_view);
+    ivBack = findViewById(R.id.reg_meds_iv_back_icon);
+    btnSearch = findViewById(R.id.reg_meds_btn_search);
+
+    ivBack.setOnClickListener(this);
+    btnSearch.setOnClickListener(this);
+
+  }
+
+
 
   private void startCameraSource() {
     // creating text recognizer
@@ -151,7 +184,40 @@ public class RecognizeMedsActivity extends AppCompatActivity {
   }
 
 
+  @Override
+  public void onClick(View v) {
+
+    switch (v.getId())
+    {
+
+      case R.id.reg_meds_iv_back_icon:
+      {
+        startActivity(new Intent(RecognizeMedsActivity.this, SearchMedicineActivity.class));
+        finish();
+        break;
+      }
 
 
+      case R.id.reg_meds_btn_search:
+      {
+        getRecognizedTextAndSendBack();
+      }
+    }
+  }
 
+  private void getRecognizedTextAndSendBack() {
+    String recognizedText = textView.getText().toString().toLowerCase().trim();
+
+    if (!recognizedText.isEmpty())
+    {
+      Intent intent = new Intent(RecognizeMedsActivity.this, SearchMedicineActivity.class);
+      intent.putExtra("recognizedText", recognizedText);
+      startActivity(intent);
+      finish();
+    }
+    else
+    {
+      Utils.makeToast(RecognizeMedsActivity.this, "No Text Recognized");
+    }
+  }
 }

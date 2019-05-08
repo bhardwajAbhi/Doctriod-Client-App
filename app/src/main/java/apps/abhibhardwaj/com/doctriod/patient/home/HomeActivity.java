@@ -2,6 +2,8 @@ package apps.abhibhardwaj.com.doctriod.patient.home;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build.VERSION;
+import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -11,6 +13,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -25,9 +28,13 @@ import apps.abhibhardwaj.com.doctriod.patient.R;
 import apps.abhibhardwaj.com.doctriod.patient.findoc.FindDoctorActivity;
 import apps.abhibhardwaj.com.doctriod.patient.models.User;
 import apps.abhibhardwaj.com.doctriod.patient.nearby.NearbyActivity;
+import apps.abhibhardwaj.com.doctriod.patient.notifications.MyFirebaseInstanceIDService;
+import apps.abhibhardwaj.com.doctriod.patient.notifications.MyFirebaseMessagingService;
+import apps.abhibhardwaj.com.doctriod.patient.notifications.NotificationsActivity;
 import apps.abhibhardwaj.com.doctriod.patient.others.Utils;
 import apps.abhibhardwaj.com.doctriod.patient.profile.ProfileActivity;
 import apps.abhibhardwaj.com.doctriod.patient.recognizemeds.RecognizeMedsActivity;
+import apps.abhibhardwaj.com.doctriod.patient.recognizemeds.SearchMedicineActivity;
 import apps.abhibhardwaj.com.doctriod.patient.reminder.PillReminderActivity;
 import apps.abhibhardwaj.com.doctriod.patient.startup.LoginActivity;
 import apps.abhibhardwaj.com.doctriod.patient.vdoctor.VDoctorActivity;
@@ -68,6 +75,22 @@ public class HomeActivity extends AppCompatActivity implements OnClickListener,
     addClickListeners();
     initNavHeader();
     initGridView();
+    startNotificationServices();
+  }
+
+  private void startNotificationServices() {
+    if (VERSION.SDK_INT >= VERSION_CODES.O) {
+      startForegroundService(new Intent(HomeActivity.this, MyFirebaseInstanceIDService.class));
+      startForegroundService(new Intent(HomeActivity.this, MyFirebaseMessagingService.class));
+      Utils.makeToast(this, "Foreground services started");
+    }
+    else
+    {
+      startService(new Intent(HomeActivity.this, MyFirebaseInstanceIDService.class));
+      startService(new Intent(HomeActivity.this, MyFirebaseMessagingService.class));
+      Utils.makeToast(this, " services started");
+    }
+
   }
 
   private void initGridView() {
@@ -111,7 +134,7 @@ public class HomeActivity extends AppCompatActivity implements OnClickListener,
           }
           case 6:
           {
-            startActivity(new Intent(HomeActivity.this, RecognizeMedsActivity.class));
+            startActivity(new Intent(HomeActivity.this, SearchMedicineActivity.class));
             break;
           }
           case 7:
@@ -221,6 +244,31 @@ public class HomeActivity extends AppCompatActivity implements OnClickListener,
       } else {
         getSupportFragmentManager().popBackStack();
       }
+    }
+
+  }
+
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu) {
+    getMenuInflater().inflate(R.menu.options_menu, menu);
+    return true;
+  }
+
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item) {
+
+    switch (item.getItemId())
+    {
+
+      case R.id.item_notification:
+      {
+        startActivity(new Intent(HomeActivity.this, NotificationsActivity.class));
+        return true;
+      }
+
+      default:
+        return super.onOptionsItemSelected(item);
     }
 
   }

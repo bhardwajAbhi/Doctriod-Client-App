@@ -20,7 +20,7 @@
       android:id="@+id/reg_meds_iv_back_icon"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:src="@drawable/ic_menu"/>
+      android:src="@drawable/ic_back_arrow"/>
 
     <TextView
       android:id="@+id/reg_meds_tv_title"
@@ -50,8 +50,21 @@
     android:layout_margin="8dp"
     android:layout_weight="1"
     android:gravity="center"
-    android:text="@string/meds_hint"
-    android:textSize="20sp"
+    android:hint="@string/meds_hint"
+    android:textColorHint="@color/colorDarkGrey"
+    android:textSize="16sp"
     android:textStyle="bold"/>
+
+  <Button
+    android:layout_weight="1"
+    android:id="@+id/reg_meds_btn_search"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:text="Search"
+    android:textSize="18sp"
+    android:textAllCaps="false"
+    android:background="@drawable/background_gradient_button"
+    android:textColor="@color/colorWhite"/>
 
 </LinearLayout>

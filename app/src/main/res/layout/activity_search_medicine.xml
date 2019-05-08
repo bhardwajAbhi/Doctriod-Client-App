@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context=".recognizemeds.SearchMedicineActivity">
+
+  <LinearLayout
+    android:id="@+id/search_med_empty_view"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:visibility="gone"
+    android:layout_gravity="center_vertical|center_horizontal"
+    android:gravity="center">
+
+    <ImageView
+      android:layout_width="150dp"
+      android:layout_height="150dp"
+      android:src="@drawable/ic_tablet"/>
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Oops !!"
+      android:textColor="@color/colorBlack"
+      android:padding="8dp"
+      android:textStyle="bold"
+      android:textSize="24sp"/>
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="No details found. Try searching another one"
+      android:textSize="16sp"/>
+
+  </LinearLayout>
+
+
+  <include layout="@layout/layout_contain_main_search_med"/>
+
+  <include layout="@layout/layout_bottom_sheet_med_info"/>
+
+  <android.support.design.widget.FloatingActionButton
+    android:id="@+id/search_med_fab"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/ic_camera"
+    android:tint="@color/colorWhite"
+    android:background="@color/colorGreen"
+    android:layout_margin="16dp"
+    android:backgroundTint="@color/colorGreen"
+    app:layout_anchor="@+id/search_med_bottom_sheet"
+    app:layout_anchorGravity="end"/>
+
+
+</android.support.design.widget.CoordinatorLayout>

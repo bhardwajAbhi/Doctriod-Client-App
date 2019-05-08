@@ -68,5 +68,9 @@ dependencies {
 
     //Horizontal Calendar
     implementation 'devs.mulham.horizontalcalendar:horizontalcalendar:1.3.4'
+
+    //FireBase Messaging
+    implementation 'com.google.firebase:firebase-messaging:17.6.0'
+
 }
 apply plugin: 'com.google.gms.google-services'

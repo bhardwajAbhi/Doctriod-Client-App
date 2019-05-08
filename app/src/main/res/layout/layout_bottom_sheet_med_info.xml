@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:orientation="vertical"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  app:behavior_hideable="true"
+  app:behavior_peekHeight="40dp"
+  app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
+  android:id="@+id/search_med_bottom_sheet">
+
+  <ImageButton
+    android:id="@+id/btm_sheet_btn_toggle"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:src="@drawable/ic_arrow_up"
+    android:background="@color/colorBlue"/>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:orientation="vertical">
+
+    <TextView
+      android:id="@+id/btm_sheet_tv_med_information_holder"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="No information Available"
+      android:lineSpacingExtra="8dp"
+      android:textSize="18sp"
+      android:textColor="@color/colorBlack"
+      android:fontFamily="@font/helvetica"
+      android:layout_marginTop="@dimen/margin_start"
+      android:layout_marginStart="@dimen/margin_start"
+      android:layout_marginBottom="16dp"/>
+
+  </LinearLayout>
+
+
+
+
+</LinearLayout>
