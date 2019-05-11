@@ -35,6 +35,7 @@ import apps.abhibhardwaj.com.doctriod.patient.others.Utils;
 import apps.abhibhardwaj.com.doctriod.patient.profile.ProfileActivity;
 import apps.abhibhardwaj.com.doctriod.patient.recognizemeds.RecognizeMedsActivity;
 import apps.abhibhardwaj.com.doctriod.patient.recognizemeds.SearchMedicineActivity;
+import apps.abhibhardwaj.com.doctriod.patient.reminder.PillReminder;
 import apps.abhibhardwaj.com.doctriod.patient.reminder.PillReminderActivity;
 import apps.abhibhardwaj.com.doctriod.patient.startup.LoginActivity;
 import apps.abhibhardwaj.com.doctriod.patient.vdoctor.VDoctorActivity;
@@ -171,23 +172,23 @@ public class HomeActivity extends AppCompatActivity implements OnClickListener,
   }
 
   private void initNavHeader() {
-   db.collection("users").document(currentUser.getUid()).get().addOnSuccessListener(
-       new OnSuccessListener<DocumentSnapshot>() {
-         @Override
-         public void onSuccess(DocumentSnapshot documentSnapshot) {
-           User user = documentSnapshot.toObject(User.class);
-           tvUserName.setText(user.getFullName());
-           tvUserEmail.setText(user.getEmail());
+    db.collection("users").document(currentUser.getUid()).get().addOnSuccessListener(
+        new OnSuccessListener<DocumentSnapshot>() {
+          @Override
+          public void onSuccess(DocumentSnapshot documentSnapshot) {
+            User user = documentSnapshot.toObject(User.class);
+            tvUserName.setText(user.getFullName());
+            tvUserEmail.setText(user.getEmail());
 
-           Picasso.get().load(user.getProfileImageURL()).into(ivUserProfile);
+            Picasso.get().load(user.getProfileImageURL()).into(ivUserProfile);
 
-         }
-       }).addOnFailureListener(new OnFailureListener() {
-     @Override
-     public void onFailure(@NonNull Exception e) {
-       Utils.makeToast(HomeActivity.this, e.getMessage());
-     }
-   });
+          }
+        }).addOnFailureListener(new OnFailureListener() {
+      @Override
+      public void onFailure(@NonNull Exception e) {
+        Utils.makeToast(HomeActivity.this, e.getMessage());
+      }
+    });
   }
 
 
@@ -291,6 +292,25 @@ public class HomeActivity extends AppCompatActivity implements OnClickListener,
         finish();
         break;
       }
+
+      case R.id.nav_item_appoint:
+      {
+        startActivity(new Intent(HomeActivity.this, AppointmentsActivity.class));
+        break;
+      }
+
+      case R.id.nav_item_nearby:
+      {
+        startActivity(new Intent(HomeActivity.this, NearbyActivity.class));
+        break;
+      }
+
+      case R.id.nav_item_remind:
+      {
+        startActivity(new Intent(HomeActivity.this, PillReminderActivity.class));
+        break;
+      }
+
 
       default:
       {
