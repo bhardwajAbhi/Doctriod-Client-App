@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:orientation="vertical"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content">
+
+  <android.support.v7.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true"
+    android:layout_margin="@dimen/margin_start"
+    app:cardCornerRadius="5dp"
+    android:elevation="8dp">
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical"
+      android:padding="2dp"
+      android:background="@drawable/background_edit_text_focus">
+
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:layout_marginStart="@dimen/margin_start"
+          android:padding="8dp">
+
+
+          <TextView
+            android:id="@+id/pres_doc_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dr Abhishek Bhardwaj"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorBlue"
+            android:layout_marginTop="4dp"/>
+
+          <TextView
+            android:id="@+id/pres_doc_specialization"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cardiologist"
+            android:textSize="16sp"
+            android:textColor="@color/colorBlack"
+            android:layout_marginTop="4dp"/>
+
+          <TextView
+            android:id="@+id/pres_doc_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dishant Hospital, Ring Road, Hmr"
+            android:textSize="16sp"
+            android:textColor="@color/colorBlack"
+            android:layout_marginTop="4dp"/>
+
+
+
+
+        </LinearLayout>
+
+
+
+      </LinearLayout>
+
+      <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_margin="4dp"
+        android:background="@color/colorGrey"/>
+
+      <ImageView
+        android:id="@+id/pres_image"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@color/colorBlue"
+        android:scaleType="fitXY"
+        android:padding="8dp"/>
+
+
+      <TextView
+        android:id="@+id/pres_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="prescription description goes here"
+        android:textSize="16sp"
+        android:padding="8dp"
+        android:textColor="@color/colorBlack"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"/>
+
+
+
+
+
+    </LinearLayout>
+
+
+
+  </android.support.v7.widget.CardView>
+
+</LinearLayout>

@@ -1,10 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<RelativeLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context=".prescription.MyPrescription">
+  android:background="@color/colorWhite"
+  tools:context=".prescription.MyPrescriptionActivity">
 
-</android.support.constraint.ConstraintLayout>
+  <android.support.v7.widget.Toolbar
+    android:id="@+id/prescription_tool_bar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:elevation="5dp"
+    android:layout_alignParentTop="true"
+    android:background="@drawable/background_toolbar">
+
+    <ImageView
+      android:id="@+id/prescription_toolbar_iv_back"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:src="@drawable/ic_back_arrow"/>
+
+    <TextView
+      android:id="@+id/prescription_toolbar_tv_title"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="My Prescription"
+      android:textSize="20sp"
+      android:textColor="@color/colorWhite"
+      android:fontFamily="@font/helvetica"
+      android:textStyle="bold"
+      android:layout_gravity="center"/>
+
+
+  </android.support.v7.widget.Toolbar>
+
+  <LinearLayout
+    android:id="@+id/layout_linear_prescription_empty_view"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_centerInParent="true"
+    android:gravity="center">
+
+    <ImageView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:src="@drawable/ic_prescription"/>
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="You have no prescriptions."
+      android:textColor="@color/colorBlack"
+      android:padding="8dp"
+      android:textStyle="bold"
+      android:textSize="18sp"/>
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Precription given by your doctor will appear here"
+      android:textSize="14sp"/>
+
+  </LinearLayout>
+
+  <android.support.v7.widget.RecyclerView
+    android:id="@+id/prescription_recycler_view"
+    android:layout_below="@id/prescription_tool_bar"
+    android:layout_width="match_parent"
+    android:padding="8dp"
+    android:visibility="gone"
+    android:layout_height="match_parent">
+
+  </android.support.v7.widget.RecyclerView>
+
+</RelativeLayout>

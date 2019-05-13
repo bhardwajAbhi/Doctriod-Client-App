@@ -33,11 +33,9 @@ import apps.abhibhardwaj.com.doctriod.patient.notifications.MyFirebaseMessagingS
 import apps.abhibhardwaj.com.doctriod.patient.notifications.NotificationsActivity;
 import apps.abhibhardwaj.com.doctriod.patient.others.AboutAppActivity;
 import apps.abhibhardwaj.com.doctriod.patient.others.Utils;
-import apps.abhibhardwaj.com.doctriod.patient.prescription.MyPrescription;
+import apps.abhibhardwaj.com.doctriod.patient.prescription.MyPrescriptionActivity;
 import apps.abhibhardwaj.com.doctriod.patient.profile.ProfileActivity;
-import apps.abhibhardwaj.com.doctriod.patient.recognizemeds.RecognizeMedsActivity;
 import apps.abhibhardwaj.com.doctriod.patient.recognizemeds.SearchMedicineActivity;
-import apps.abhibhardwaj.com.doctriod.patient.reminder.PillReminder;
 import apps.abhibhardwaj.com.doctriod.patient.reminder.PillReminderActivity;
 import apps.abhibhardwaj.com.doctriod.patient.startup.LoginActivity;
 import apps.abhibhardwaj.com.doctriod.patient.vdoctor.VDoctorActivity;
@@ -122,7 +120,7 @@ public class HomeActivity extends AppCompatActivity implements OnClickListener,
           }
           case 3:
           {
-            startActivity(new Intent(HomeActivity.this, MyPrescription.class));
+            startActivity(new Intent(HomeActivity.this, MyPrescriptionActivity.class));
             break;
           }
           case 4:
