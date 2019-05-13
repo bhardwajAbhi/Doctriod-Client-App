@@ -3,14 +3,17 @@ package apps.abhibhardwaj.com.doctriod.patient.startup;
 import android.Manifest.permission;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.provider.MediaStore.Images.Media;
 import android.support.annotation.NonNull;
@@ -214,10 +217,28 @@ public class SignUpActivity extends AppCompatActivity implements OnClickListener
   }
 
   private void startCamera() {
-    Intent takePicture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+/*    Intent takePicture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
     if (takePicture.resolveActivity(getPackageManager()) != null) {
       startActivityForResult(takePicture, CAMERA_REQUEST);
-    }
+    }*/
+
+    StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+    StrictMode.setVmPolicy(builder.build());
+
+  Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+  if (takePictureIntent.resolveActivity(getPackageManager()) != null)
+  {
+    String fileName = "temp.jpg";
+    ContentValues values = new ContentValues();
+    values.put(Media.TITLE, fileName);
+    capImageURI = getContentResolver().insert(Media.EXTERNAL_CONTENT_URI, values);
+    takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, capImageURI);
+    startActivityForResult(takePictureIntent, CAMERA_REQUEST);
+  }
+
+
+
+
   }
 
   @Override
@@ -235,9 +256,17 @@ public class SignUpActivity extends AppCompatActivity implements OnClickListener
         break;
       }
       case CAMERA_REQUEST: {
-        if (resultCode == RESULT_OK && data.getData() != null) {
-          capImageURI = data.getData();
-          setProfileImage(data.getData());
+        if (resultCode == RESULT_OK ) {
+
+          String[] projection = {Media.DATA};
+          Cursor cursor = managedQuery(capImageURI, projection, null, null, null);
+          int column_index_data = cursor.getColumnIndexOrThrow(Media.DATA);
+          cursor.moveToFirst();
+          String picturePath = cursor.getString(column_index_data);
+          capImageURI = Uri.parse("file://" + picturePath);
+
+          setProfileImage(capImageURI);
+
         } else {
           Utils.makeToast(SignUpActivity.this, "No Image Captured! Try Again");
         }

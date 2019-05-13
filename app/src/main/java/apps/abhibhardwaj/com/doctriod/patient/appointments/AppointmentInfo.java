@@ -2,10 +2,18 @@ package apps.abhibhardwaj.com.doctriod.patient.appointments;
 
 public class AppointmentInfo {
 
-  private String customerName, customerPhone, doctorID, doctorName, time, docSpec, docAddess, docPhone, appointmentID;
+  private String customerName, customerPhone, doctorID, doctorName, time, docSpec, docAddess, docPhone, appointmentID, userID;
   private Long slot;
 
   public AppointmentInfo() {
+  }
+
+  public String getUserID() {
+    return userID;
+  }
+
+  public void setUserID(String userID) {
+    this.userID = userID;
   }
 
   public String getCustomerName() {

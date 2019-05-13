@@ -27,6 +27,10 @@
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
+    <activity android:name=".prescription.MyPrescription">
+    </activity>
+    <activity android:name=".others.AboutAppActivity">
+    </activity>
     <activity android:name=".recognizemeds.SearchMedicineActivity">
     </activity>
 

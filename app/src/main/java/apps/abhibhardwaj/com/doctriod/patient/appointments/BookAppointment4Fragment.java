@@ -170,6 +170,7 @@ public class BookAppointment4Fragment extends Fragment implements OnClickListene
     appointmentInfo.setCustomerPhone(user.getPhone());
     appointmentInfo.setTime(new StringBuilder(Common.convertTimeSlotToString(Common.currentTimeSlot)).append(" at ").append(simpleDateFormat.format(Common.currentDate.getTime())).toString());
     appointmentInfo.setSlot(Long.valueOf(Common.currentTimeSlot));
+    appointmentInfo.setUserID(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
     DocumentReference appointmentDate = FirebaseFirestore.getInstance()
         .collection("AllDoctors")

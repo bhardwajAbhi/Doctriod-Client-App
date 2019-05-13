@@ -31,7 +31,9 @@ import apps.abhibhardwaj.com.doctriod.patient.nearby.NearbyActivity;
 import apps.abhibhardwaj.com.doctriod.patient.notifications.MyFirebaseInstanceIDService;
 import apps.abhibhardwaj.com.doctriod.patient.notifications.MyFirebaseMessagingService;
 import apps.abhibhardwaj.com.doctriod.patient.notifications.NotificationsActivity;
+import apps.abhibhardwaj.com.doctriod.patient.others.AboutAppActivity;
 import apps.abhibhardwaj.com.doctriod.patient.others.Utils;
+import apps.abhibhardwaj.com.doctriod.patient.prescription.MyPrescription;
 import apps.abhibhardwaj.com.doctriod.patient.profile.ProfileActivity;
 import apps.abhibhardwaj.com.doctriod.patient.recognizemeds.RecognizeMedsActivity;
 import apps.abhibhardwaj.com.doctriod.patient.recognizemeds.SearchMedicineActivity;
@@ -76,7 +78,7 @@ public class HomeActivity extends AppCompatActivity implements OnClickListener,
     addClickListeners();
     initNavHeader();
     initGridView();
-    startNotificationServices();
+    // startNotificationServices();
   }
 
   private void startNotificationServices() {
@@ -120,7 +122,7 @@ public class HomeActivity extends AppCompatActivity implements OnClickListener,
           }
           case 3:
           {
-            Utils.makeToast(HomeActivity.this, "you clicked item " + position);
+            startActivity(new Intent(HomeActivity.this, MyPrescription.class));
             break;
           }
           case 4:
@@ -251,7 +253,7 @@ public class HomeActivity extends AppCompatActivity implements OnClickListener,
 
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
-    getMenuInflater().inflate(R.menu.options_menu, menu);
+    // getMenuInflater().inflate(R.menu.options_menu, menu);
     return true;
   }
 
@@ -311,6 +313,11 @@ public class HomeActivity extends AppCompatActivity implements OnClickListener,
         break;
       }
 
+      case R.id.nav_item_about:
+      {
+        startActivity(new Intent(HomeActivity.this, AboutAppActivity.class));
+        break;
+      }
 
       default:
       {
