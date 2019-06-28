@@ -5,3 +5,4 @@ The application provides features like finding nearby hospitals, doctors, pharma
 
 Following are some screenshots of the application implemented on smartphone side:
 
+![](1.jpg) ![](2.jpg)
