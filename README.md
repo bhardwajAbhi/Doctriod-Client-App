@@ -6,8 +6,9 @@ The application provides features like finding nearby hospitals, doctors, pharma
 Following are some screenshots of the application implemented on smartphone side:
 
 <p float="left">
-  <img src="screenshots/1.jpg" width="400" />
-  <img src="screenshots/2.jpg" width="400" /> 
+  <img src="screenshots/1.jpg" width="250" />
+  <img src="screenshots/2.jpg" width="250" /> 
+  <img src="screenshots/3.jpg" width="250" />
 </p>
 
 <p float="left">
