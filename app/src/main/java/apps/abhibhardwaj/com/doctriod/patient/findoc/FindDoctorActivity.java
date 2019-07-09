@@ -51,7 +51,7 @@ public class FindDoctorActivity extends AppCompatActivity implements OnClickList
   private Location currentLocation;
   private FusedLocationProviderClient fusedLocationProviderClient;
 
-  private static final String API_KEY = "AIzaSyB0mzGO2Yn9fl8RCzWFFCdp8_6zfz9Rerc";
+  private static final String API_KEY = "Paste your own API key here";
   private static final int LOCATION_REQUEST_CODE = 111;
   private ArrayList<Result> doctorList;
   private NearPlaceInterface service;
