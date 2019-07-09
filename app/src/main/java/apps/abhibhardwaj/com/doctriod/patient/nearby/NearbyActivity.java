@@ -69,7 +69,7 @@ public class NearbyActivity extends AppCompatActivity implements OnClickListener
   private LinearLayout btnHospital, btnDentist, btnDoctor, btnPharmacy;
 
   private static int TOGGLE_FAB = 1;
-  private static final String API_KEY = "AIzaSyB0mzGO2Yn9fl8RCzWFFCdp8_6zfz9Rerc";
+  private static final String API_KEY = "paste your own API key here";
   private NearPlaceInterface service;
   private ProgressDialog dialog;
   private ArrayList<Result> placesList;
