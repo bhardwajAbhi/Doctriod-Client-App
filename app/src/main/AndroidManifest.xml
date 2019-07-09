@@ -117,7 +117,7 @@
 
     <meta-data
       android:name="com.google.android.geo.API_KEY"
-      android:value="AIzaSyB0mzGO2Yn9fl8RCzWFFCdp8_6zfz9Rerc"/>
+      android:value="Google Maps API here"/>
     <meta-data
       android:name="com.google.android.gms.vision.DEPENDENCIES"
       android:value="ocr"/>
