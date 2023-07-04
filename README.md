@@ -21,4 +21,6 @@ Following are some screenshots of the application implemented on smartphone side
   <img src="screenshots/9.jpg" width="250" />
 </p>
 
+## Visitors Count
+
 <img align="left" src = "https://profile-counter.glitch.me/Doctriod-Client-App/count.svg" alt ="Loading">
